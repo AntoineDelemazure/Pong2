@@ -6,17 +6,13 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Connexion</a></li>
-        <li><a href="#">Inscription</a></li>
+        <li><a routerLink="/login">Connexion</a></li>
+        <li><a routerLink="/register">Inscription</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container">
-  <h1>Bienvenue !</h1>
-
-  Ici vous pouvez consulter des tournois en ligne et même vous y inscrire !
-
-  Il vous faut un compte pour ça, donc allez dans Inscription ! :)
+<div class="row">
+  <router-outlet></router-outlet>
 </div>
