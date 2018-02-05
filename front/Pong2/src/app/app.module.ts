@@ -9,7 +9,6 @@ import { DropdownDirective } from './shared/dropdown.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    DropdownDirective
   ],
   imports: [
     BrowserModule
