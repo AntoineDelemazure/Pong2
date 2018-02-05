@@ -33,7 +33,7 @@ describe("Test de la bdd", function(){
         done();
     })
 
-    it('devrait se connecter à la bdd', function(done){
+    it('should connect to the bdd', function(done){
         let result
         connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
             if (err) throw err
@@ -41,7 +41,7 @@ describe("Test de la bdd", function(){
             if(result == 2){
                 done()
             }else{
-                done(new Error("On a du mal à acceder à la bdd" + result))
+                done(new Error("could not connect to the bdd"))
             }
         })        
     })// fin test
