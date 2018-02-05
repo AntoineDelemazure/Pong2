@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 
+ultimate_truth = function(){
+    return true
+}
+
 app.get('/', function (req, res) {
   res.send('Hello World!')
 })
