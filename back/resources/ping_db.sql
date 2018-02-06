@@ -1,10 +1,10 @@
 
-//Création de la base de données ping_db
+-- Création de la base de données ping_db
 
 CREATE DATABASE IF NOT EXISTS ping_db;
 ALTER DATABASE ping_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-//Drop les tables
+-- Drop les tables
 
 DROP TABLE IF EXISTS p_tournois;
 DROP TABLE IF EXISTS p_joueurs;
@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS p_matchs;
 DROP TABLE IF EXISTS p_joue;
 DROP TABLE IF EXISTS p_participe;
 
-//Crée les tables
+-- Crée les tables
 CREATE TABLE p_joueurs
 (
 	joueur_id BIGINT NOT NULL AUTO_INCREMENT,
