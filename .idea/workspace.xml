@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f56de34a-5cc9-48ba-b579-8da2e2436c4c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.html" afterPath="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.ts" afterPath="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front/Ping/src/app/_helpers/fake-backend.ts" afterPath="$PROJECT_DIR$/front/Ping/src/app/_helpers/fake-backend.ts" />
-    </list>
+    <list default="true" id="f56de34a-5cc9-48ba-b579-8da2e2436c4c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -150,10 +146,10 @@
         <option value="$PROJECT_DIR$/front/Ping/src/app/home/home.component.html" />
         <option value="$PROJECT_DIR$/front/Ping/src/app/home/home.component.ts" />
         <option value="$PROJECT_DIR$/front/Ping/src/app/_models/user.ts" />
-        <option value="$PROJECT_DIR$/front/Ping/src/app/register/register.component.html" />
         <option value="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.html" />
         <option value="$PROJECT_DIR$/front/Ping/src/app/_directives/alert.component.ts" />
         <option value="$PROJECT_DIR$/front/Ping/src/app/_helpers/fake-backend.ts" />
+        <option value="$PROJECT_DIR$/front/Ping/src/app/register/register.component.html" />
       </list>
     </option>
   </component>
@@ -419,7 +415,7 @@
       <updated>1517826148085</updated>
       <workItem from="1517826149273" duration="7223000" />
       <workItem from="1517921486029" duration="2909000" />
-      <workItem from="1517925743284" duration="4567000" />
+      <workItem from="1517925743284" duration="4922000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1517838003623</created>
@@ -460,11 +456,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14699000" />
+    <option name="totallyTimeSpent" value="15054000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -476,7 +471,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18176973" sideWeight="0.24473257" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
