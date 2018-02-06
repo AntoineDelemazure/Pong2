@@ -17,6 +17,7 @@ import {FormsModule} from "@angular/forms";
 import {routing} from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { InvitationComponent } from './invitation/invitation.component';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { InvitationComponent } from './invitation/invitation.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    InvitationComponent
+    InvitationComponent,
+    ProfilComponent
   ],
   providers: [
     AuthGuard,
