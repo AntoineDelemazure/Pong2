@@ -20,10 +20,11 @@ CREATE TABLE p_joueurs
 	joueur_prenom VARCHAR(100) NOT NULL,
 	joueur_rang INTEGER,
 	joueur_username VARCHAR(100),
+	joueur_mail VARCHAR(100),
 	joueur_password VARCHAR(100),
 	joueur_admin BOOLEAN NOT NULL,
 	PRIMARY KEY (joueur_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='Table des joueurs';
 
 CREATE TABLE p_tournois
 (
@@ -35,7 +36,7 @@ CREATE TABLE p_tournois
 	tournoi_arbitre_id BIGINT,
 	PRIMARY KEY (tournoi_id),
 	FOREIGN KEY (tournoi_arbitre_id) REFERENCES p_joueurs(joueur_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des tournois';
 
 CREATE TABLE p_matchs
 (
@@ -44,7 +45,7 @@ CREATE TABLE p_matchs
 	match_tournament_id BIGINT,
 	PRIMARY KEY (match_id),
 	FOREIGN KEY (match_tournament_id) REFERENCES p_tournois(tournoi_id)	
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des matchs';
 
 CREATE TABLE p_participe
 (
@@ -53,7 +54,7 @@ CREATE TABLE p_participe
 	PRIMARY KEY (participe_tournoi_id,participe_joueur_id),
 	FOREIGN KEY (participe_tournoi_id) REFERENCES p_tournois(tournoi_id),
 	FOREIGN KEY (participe_joueur_id) REFERENCES p_joueurs(joueur_id)	
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table participe';
 
 CREATE TABLE p_joue
 (
@@ -63,4 +64,4 @@ CREATE TABLE p_joue
 	PRIMARY KEY (joue_match_id,joue_joueur_id),
 	FOREIGN KEY (joue_match_id) REFERENCES p_matchs(match_id),
 	FOREIGN KEY (joue_joueur_id) REFERENCES p_joueurs(joueur_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table joue';
