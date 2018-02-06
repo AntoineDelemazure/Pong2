@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "execsql": "0.0.3",
     "express": "^4.16.2",
     "mocha": "^5.0.0",
     "mysql": "^2.15.0"

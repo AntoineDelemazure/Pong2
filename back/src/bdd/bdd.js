@@ -1,21 +1,42 @@
 const mysql = require('mysql')
+const execsql = require('execsql')
 
 let connection // il vaudra peut-être mieux déplacer ça dans le main ?
+let directory_name = "ping_db.sql"
 
 exports.connect = function() {
     connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'pingdb'
+      database: 'ping_db'
     })
 }
 
 exports.init = function(){
-    connection.query('CREATE TABLE if not exists people (id int primary key, name varchar(255), age int, address text)', function(err, result) {
-        if (err) throw err
-        console.log("table people créée")
-    }) 
+    connection.connect(function(err) {
+        // si ça plante, on la recrée. (Il possible que ce soit parfaitement crétin.)
+        if (err){
+            create()
+            console.log("Base de donnée réinitalisée")
+        }
+    })
+}
+
+create = function(){
+    let dbConfig = {
+        host: 'localhost',
+        user: 'root',
+        password: ''
+    }
+    let sql = 'use ping_db;'
+    let sqlFile = directory_name
+    execsql.config(dbConfig)
+    .exec(sql)
+    .execFile(sqlFile, function(err, results){
+        console.log(results);
+    }).end();
+    console.log("La bdd existe")
 }
 
 exports.getPeoplebyID = function(id){

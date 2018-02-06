@@ -28,20 +28,18 @@ describe("Test de la bdd", function(){
         connection = mysql.createConnection({
             host     : 'localhost',
             user     : 'root',
-            password : ''
+            password : '',
+            database : 'ping_db'
         });
         done();
     })
 
     it('should connect to the bdd', function(done){
-        let result
-        connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-            if (err) throw err
-            result  = rows[0].solution //result == 2
-            if(result == 2){
+        connection.connect(function(err) {
+            if (err) {
+                done(err)
+            } else {
                 done()
-            }else{
-                done(new Error("could not connect to the bdd"))
             }
         })        
     })// fin test

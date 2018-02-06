@@ -5,7 +5,6 @@ const bdd = require("./bdd/bdd")
 
 bdd.connect()
 bdd.init()
-bdd.getPeoplebyID(0)
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
