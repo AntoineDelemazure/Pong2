@@ -2,6 +2,8 @@
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
+import {AuthenticationService} from "../_services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +14,10 @@ export class HomeComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserService,
+    private authentificationService: AuthenticationService,
+                private router:Router
+    ) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
@@ -26,5 +31,10 @@ export class HomeComponent implements OnInit {
 
     private loadAllUsers() {
         this.userService.getAll().subscribe(users => { this.users = users; });
+    }
+
+    private logout(){
+      this.authentificationService.logout();
+      this.router.navigate(["['/']"]);
     }
 }
