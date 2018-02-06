@@ -2,7 +2,7 @@ const mysql = require('mysql')
 const execsql = require('execsql')
 
 let connection // il vaudra peut-être mieux déplacer ça dans le main ?
-let directory_name = "ping_db.sql"
+let directory_name = "../resources/ping_db.sql"
 
 exports.connect = function() {
     connection = mysql.createConnection({
