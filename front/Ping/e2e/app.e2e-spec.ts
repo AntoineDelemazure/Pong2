@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ping App', () => {
+describe('pong2 App', () => {
   let page: AppPage;
 
   beforeEach(() => {
