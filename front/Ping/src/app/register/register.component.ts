@@ -12,7 +12,9 @@ import { AlertService, UserService } from '../_services/index';
     moduleId: module.id,
     templateUrl: 'register.component.html'
 })
-
+/**
+ * Composant utilisé pour enregistrer un nouvelle utilisateur
+ */
 export class RegisterComponent {
     model: any = {};
     loading = false;
