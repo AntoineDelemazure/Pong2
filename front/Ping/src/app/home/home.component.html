@@ -1,14 +1,29 @@
-﻿<div class="col-md-6 col-md-offset-3">
-    <h1>Hi {{currentUser.firstName}}!</h1>
-    <p>You're logged in with Angular 2!!</p>
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-          <!--Rajout de l'email à afficher-->
-            {{user.username}} ({{user.firstName}} {{user.lastName}} {{user.email}})
-            - <a (click)="deleteUser(user.id)">Delete</a>
-        </li>
-    </ul>
-    <p><a  (click)="logout()" >Logout</a></p>
-</div>
+﻿<div *ngIf="currentUser != null;then logged else notLogged"></div>
+  <ng-template #logged>
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Hi {{currentUser.firstName}}!</h1>
+        <p>You're logged in with Angular 2!!</p>
+        <h3>All registered users:</h3>
+        <ul>
+            <li *ngFor="let user of users">
+              <!--Rajout de l'email à afficher-->
+                {{user.username}} ({{user.firstName}} {{user.lastName}} {{user.email}})
+                - <a (click)="deleteUser(user.id)">Delete</a>
+            </li>
+        </ul>
+        <p><a  (click)="logout()" >Logout</a></p>
+    </div>
+  </ng-template>
+
+
+  <ng-template #notLogged>
+    <div class="container">
+      <h1>Bienvenue !</h1>
+
+      Ici vous pouvez consulter des tournois en ligne et même vous y inscrire !
+
+      Il vous faut un compte pour ça, donc allez dans Inscription ! :)
+    </div>
+  </ng-template>
+
 

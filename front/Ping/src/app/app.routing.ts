@@ -8,7 +8,7 @@ import {InvitationComponent} from "./invitation/invitation.component";
 import {ProfilComponent} from "./profil/profil.component";
 
 const appRoutes: Routes = [
-  { path: '', component: InvitationComponent},
+  { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
