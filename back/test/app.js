@@ -44,6 +44,16 @@ describe("Test de la bdd", function(){
         })        
     })// fin test
 
+    it('should access a table', function(done){
+        connection.query("Select * From p_joueurs", function(err){
+            if(err){
+                done(err)
+            } else{
+                done()
+            }
+        })
+    })//fin test
+
     after(function(done){
         connection.end()
         done()
