@@ -18,7 +18,6 @@ import {routing} from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { ProfilComponent } from './profil/profil.component';
-import { ConsulterProfilComponent } from './consulter-profil/consulter-profil.component';
 
 @NgModule({
   imports: [
@@ -35,7 +34,6 @@ import { ConsulterProfilComponent } from './consulter-profil/consulter-profil.co
     HomeComponent,
     InvitationComponent,
     ProfilComponent,
-    ConsulterProfilComponent
   ],
   providers: [
     AuthGuard,
