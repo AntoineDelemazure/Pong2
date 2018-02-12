@@ -37,20 +37,7 @@ let Connection = (function(){
         }
     };
 })();
-
 exports.Connection = Connection;
-
-/**
- * Charge les informations de connexion dans l'objet connection
- */
-// exports.connect = function() {
-//     connection = mysql.createConnection({
-//         host: 'localhost',
-//         user: 'root',
-//         password: '',
-//         database: 'ping_db'
-//     });
-// };
 
 /**
  * Se connecte à la bdd et créé les tables si nécessaire
