@@ -4,31 +4,37 @@
       <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <br style="clear:both">
         <h3 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h3>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Nom</h2>
-          <input type="text" class="form-control" id="lastname" name="nom" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+          <input type="text" class="form-control" id="lastname" name="nom" [(ngModel)]="model.lastName" #firstName="ngModel" required />
+          <div *ngIf="f.submitted" class="help-block">Le nom est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Prenom</h2>
-          <input type="text" class="form-control" id="firstName" name="prenom" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+          <input type="text" class="form-control" id="firstName" name="prenom" [(ngModel)]="model.firstName" #lastName="ngModel" required />
+          <div *ngIf="f.submitted" class="help-block">Le prénom est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Email</h2>
           <input type="text" class="form-control" id="email" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required>
+          <div *ngIf="f.submitted" class="help-block">L'email est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Identifiant</h2>
           <input type="text" class="form-control" name="username" placeholder="Identifiant " [(ngModel)]="model.username" #username="ngModel" required />
+          <div *ngIf="f.submitted" class="help-block">L'identifiant est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Mot de Passe</h2>
           <input type="password" class="form-control" name="password" placeholder="Mot de Passe (minimum 6 caractères) " [(ngModel)]="model.password" #password="ngModel" required />
+          <div *ngIf="f.submitted" class="help-block">Le mot de passe est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Confirmation de Mot de Passe</h2>
           <input type="password" class="form-control" id="pass2" name="subject" placeholder="Confirmation Mot de Passe " required>
+          <div *ngIf="f.submitted && !username.valid" class="help-block">La confirmation du mot de passe est requis</div>
         </div>
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <button [disabled]="loading" class="btn btn-primary">Valider</button>
           <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
           <a [routerLink]="['/login']" class="btn btn-link">Annulere</a>
