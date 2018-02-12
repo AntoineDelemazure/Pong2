@@ -19,19 +19,23 @@ export class ProfilComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
 
+  /**
+   * Recupere le current user
+   * @param {UserService} userService
+   * @param {AuthenticationService} authentificationService
+   * @param {Router} router
+   */
   constructor(private userService: UserService,
               private authentificationService: AuthenticationService,
               private router:Router
-  ) {
+  )
+  {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
-    this.loadUsers();
   }
 
-  private loadUsers() {
-  }
 
   private logout(){
     this.authentificationService.logout();
