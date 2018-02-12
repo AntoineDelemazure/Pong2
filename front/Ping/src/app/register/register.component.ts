@@ -1,7 +1,6 @@
 ﻿/**
  * création d'un nouveau utilisateur
- *
- *
+ * le formulaire d'ajout d'un utilisateur est dans register.component.html
  */
 
 import { Component } from '@angular/core';
@@ -23,6 +22,9 @@ export class RegisterComponent {
         private userService: UserService,
         private alertService: AlertService) { }
 
+  /**
+   * la classe UserService permet de créer un utilisateur en appelant la fonction create qui prend comme parametres un utilisateur
+   */
     register() {
         this.loading = true;
         this.userService.create(this.model)
