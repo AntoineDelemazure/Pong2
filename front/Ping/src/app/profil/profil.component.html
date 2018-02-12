@@ -6,11 +6,11 @@
         <h1 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h1>
         <div class="form-group">
          <h2>Nom</h2>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Nom" required>
+          <input type="text" class="form-control" id="lastName" name="name" placeholder="Nom" required>
         </div>
         <div class="form-group">
           <h2>Prenom</h2>
-          <input type="text" class="form-control" id="prenom" name="email" placeholder="Prenom" required>
+          <input type="text" class="form-control" id="firstName" name="email" placeholder="Prenom" required>
         </div>
         <div class="form-group">
           <h2>Email</h2>
@@ -22,11 +22,11 @@
         </div>
         <div class="form-group">
           <h2>Mot de Passe</h2>
-          <input type="password" class="form-control" id="pass" name="password" placeholder="Mot de Passe (minimum 6 caractères) " required>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Mot de Passe (minimum 6 caractères) " required>
         </div>
         <div class="form-group">
           <h2>Confirmation de Mot de Passe</h2>
-          <input type="password" class="form-control" id="pass2" name="cpassword"  placeholder="Confirmation Mot de Passe " required>
+          <input type="password" class="form-control" id="password2" name="cpassword"  placeholder="Confirmation Mot de Passe " required>
         </div>
         <div class="form-group">
           <button [disabled]="loading" class="btn btn-primary">Valider</button>
