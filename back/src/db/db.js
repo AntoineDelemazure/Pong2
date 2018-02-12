@@ -9,28 +9,55 @@ const winston = require('winston');
 /**
  * Objet qui contiendra les informations de connexion
  */
-let connection;
+//let connection;
 //TODO : A bouger ?
 let directory_name = "../resources/ping_db.sql";
+
+/** 
+ * Singleton d'instance de connexion
+*/
+let Connection = (function(){
+    let instance;
+
+    function createInstance(){
+        connection = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '',
+            database: 'ping_db'
+        });
+        return connection;
+    }
+    return{
+        getInstance: function(){
+            if(!instance){
+                instance = createInstance();
+            }
+            return instance;
+        }
+    };
+})();
+
+exports.Connection = Connection;
 
 /**
  * Charge les informations de connexion dans l'objet connection
  */
-exports.connect = function() {
-    connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'ping_db'
-    });
-};
+// exports.connect = function() {
+//     connection = mysql.createConnection({
+//         host: 'localhost',
+//         user: 'root',
+//         password: '',
+//         database: 'ping_db'
+//     });
+// };
 
 /**
  * Se connecte à la bdd et créé les tables si nécessaire
  * @throws {ECONNREFUSED} Connexion à la base de données impossible
  */
 exports.init = function(){
-    connection.connect(
+    Connection.getInstance().connect(
         function(err) {
             if (err){
                 winston.log('error', 'La connexion a échoué', err);
@@ -38,7 +65,7 @@ exports.init = function(){
             }
         });
 
-    connection.query("SELECT * FROM p_joueurs;",
+    Connection.getInstance().query("SELECT * FROM p_joueurs;",
         function() {
             winston.log('info', 'Table p_joueurs inaccessible, création de la bdd');
             create();
@@ -64,11 +91,4 @@ create = function(){
         winston.log('info', 'Tables créées');
     })
 
-};
-
-exports.getPeoplebyID = function(id){
-    connection.query('select * from people where id = '+id, function(err, result){
-        if(err) throw err
-        console.log(result[0].name)
-    })
 };

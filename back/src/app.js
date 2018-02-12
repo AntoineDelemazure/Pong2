@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
 
-const bdd = require("./bdd/bdd")
+const db = require("./db/db")
+const player_r = require("./db/player_request")
 
-bdd.connect()
-bdd.init()
+
+db.init()
+player_r.getPlayerByID()
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
