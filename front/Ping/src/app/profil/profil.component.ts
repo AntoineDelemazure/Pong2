@@ -5,7 +5,9 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
-
+/**
+ * Affiche les informations d'un utilisateur
+ */
 
 @Component({
   selector: 'app-profil',
