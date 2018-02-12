@@ -3,7 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { AlertService } from '../_services/index';
 
-// Lors de la recepetion d un message de alerte service il  le passe au template
+/**
+ * Lors de la recepetion d un message de alerte service il  le passe au template
+  */
 
 @Component({
     moduleId: module.id,
