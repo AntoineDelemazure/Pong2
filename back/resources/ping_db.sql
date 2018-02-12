@@ -33,16 +33,16 @@ CREATE TABLE p_tournois
 	tournoi_tour_actuel INTEGER,
 	tournoi_arbitre_id BIGINT,
 	PRIMARY KEY (tournoi_id),
-	FOREIGN KEY (tournoi_arbitre_id) REFERENCES p_joueurs(joueur_id)
+	FOREIGN KEY (tournoi_arbitre_id) REFERENCES p_joueurs(joueur_id) ON DELETE SET NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des tournois';
 
 CREATE TABLE p_matchs
 (
 	match_id BIGINT NOT NULL AUTO_INCREMENT,
 	match_tour INTEGER,
-	match_tournament_id BIGINT,
+	match_tournament_id BIGINT NOT NULL,
 	PRIMARY KEY (match_id),
-	FOREIGN KEY (match_tournament_id) REFERENCES p_tournois(tournoi_id)	
+	FOREIGN KEY (match_tournament_id) REFERENCES p_tournois(tournoi_id) ON DELETE CASCADE	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des matchs';
 
 CREATE TABLE p_participe
@@ -50,8 +50,8 @@ CREATE TABLE p_participe
 	participe_tournoi_id BIGINT NOT NULL,
 	participe_joueur_id BIGINT NOT NULL,
 	PRIMARY KEY (participe_tournoi_id,participe_joueur_id),
-	FOREIGN KEY (participe_tournoi_id) REFERENCES p_tournois(tournoi_id),
-	FOREIGN KEY (participe_joueur_id) REFERENCES p_joueurs(joueur_id)	
+	FOREIGN KEY (participe_tournoi_id) REFERENCES p_tournois(tournoi_id) ON DELETE CASCADE,
+	FOREIGN KEY (participe_joueur_id) REFERENCES p_joueurs(joueur_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table participe';
 
 CREATE TABLE p_joue
@@ -60,6 +60,6 @@ CREATE TABLE p_joue
 	joue_match_id BIGINT NOT NULL,
 	joue_joueur_id BIGINT NOT NULL,
 	PRIMARY KEY (joue_match_id,joue_joueur_id),
-	FOREIGN KEY (joue_match_id) REFERENCES p_matchs(match_id),
-	FOREIGN KEY (joue_joueur_id) REFERENCES p_joueurs(joueur_id)
+	FOREIGN KEY (joue_match_id) REFERENCES p_matchs(match_id) ON DELETE CASCADE,
+	FOREIGN KEY (joue_joueur_id) REFERENCES p_joueurs(joueur_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table joue';
