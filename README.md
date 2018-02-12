@@ -9,3 +9,7 @@ Pour tester le back, placez vous dans le répertoire "back", et lancez la comman
 
 Pour lancer le back, placez vous dans le répertoire "back", et lancez la commande "node app.js"
 (A moins que nous ayons créé un script et oublié de modifier ce markdown)
+
+#Générer de la doc
+
+Si vous voulez étoffer la documentation, vous pouvez écrire des commentaires comme vous le feriez pour de la doc java, puis lancez la commande "npm run-script gdoc"
