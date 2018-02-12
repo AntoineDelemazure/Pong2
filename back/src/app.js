@@ -6,7 +6,7 @@ const player_r = require("./db/player_request")
 
 
 db.init()
-player_r.getPlayerByID()
+player_r.getPlayerPasswordByUsername('MakeUsWhole')
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
