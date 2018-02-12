@@ -1,9 +1,9 @@
 ﻿<div *ngIf="currentUser != null;then logged else notLogged"></div>
   <ng-template #logged>
     <div class="col-md-6 col-md-offset-3">
-        <h1>Hi {{currentUser.firstName}}!</h1>
-        <p>You're logged in with Angular 2!!</p>
-        <h3>All registered users:</h3>
+        <h1>Bonjour {{currentUser.firstName}}!</h1>
+        <p>Vous êtes connecté au Ping-Pong de Maizières-lès-Metz</p>
+        <h3>Tout les utilisateurs enregistrés :</h3>
         <ul>
             <li *ngFor="let user of users">
               <!--Rajout de l'email à afficher-->
@@ -11,7 +11,7 @@
                 - <a (click)="deleteUser(user.id)">Delete</a>
             </li>
         </ul>
-        <p><a  (click)="logout()" >Logout</a></p>
+        <p><a  (click)="logout()" >Déconnexion</a></p>
     </div>
   </ng-template>
 
