@@ -5,6 +5,9 @@ import { UserService } from '../_services/index';
 import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
 
+/**
+ * Page cible une fois que l'utilisateur est connecté
+ */
 @Component({
     moduleId: module.id,
     templateUrl: 'home.component.html'
