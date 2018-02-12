@@ -66,9 +66,11 @@ exports.init = function(){
         });
 
     Connection.getInstance().query("SELECT * FROM p_joueurs;",
-        function() {
-            winston.log('info', 'Table p_joueurs inaccessible, création de la bdd');
-            create();
+        function(err) {
+            if(err){
+                winston.log('info', 'Table p_joueurs inaccessible, création de la bdd');
+                create();
+            }
         });
 };
 
