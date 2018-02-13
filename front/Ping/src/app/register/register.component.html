@@ -20,6 +20,11 @@
           <div *ngIf="f.submitted" class="help-block">L'email est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
+          <h2>Rang</h2>
+          <input type="text" class="form-control" id="rang" name="rang" [(ngModel)]="model.rang" #email="ngModel" required>
+          <div *ngIf="f.submitted" class="help-block">Le rang est requis</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Identifiant</h2>
           <input type="text" class="form-control" name="username" placeholder="Identifiant " [(ngModel)]="model.username" #username="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">L'identifiant est requis</div>
