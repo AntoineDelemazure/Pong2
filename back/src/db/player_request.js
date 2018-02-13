@@ -91,13 +91,13 @@ exports.createPlayer = function(player, callback){
      })
 }
 
-exports.getAllPlayers = function() {
+exports.getAllPlayers = function(callback) {
     db.Connection.getInstance().query('SELECT * FROM p_joueurs', function(err, rows, fields) {
         if (err) {
             winston.log('error', 'Impossible de récupérer tous les joueurs');
             throw err;
         }
-        winston.log('info', '');
-        return(rows);
+        winston.log('info', 'getAllPlayers');
+        callback(rows);
     });
 };
