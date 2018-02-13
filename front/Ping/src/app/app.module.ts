@@ -18,6 +18,7 @@ import {routing} from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { ProfilComponent } from './profil/profil.component';
+import { ListeTournoisComponent } from './liste-tournois/liste-tournois.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { ProfilComponent } from './profil/profil.component';
     HomeComponent,
     InvitationComponent,
     ProfilComponent,
+    ListeTournoisComponent,
   ],
   providers: [
     AuthGuard,
