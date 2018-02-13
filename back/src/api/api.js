@@ -35,9 +35,9 @@ exports.sendNewPlayer = function (req, res) {
     try {
         let player = req.body;
 
-        if (player_r.getPlayerByUsername(player.username)[0]) {
-            return res.status(409).body('Cet username est déjà utilisé');
-        }
+        // if (player_r.getPlayerByUsername(player.joueur_username)[0]) {
+        //     return res.status(409).body('Cet username est déjà utilisé');
+        // }
 
         player_r.createNewPlayer(player, function(resultPlayer) {
             return res.status(200);
@@ -53,8 +53,26 @@ exports.authenticate = function(req, res) {
 
     try {
 
-        let player = req.body;
-        
+        let credentials = req.body;
+
+        player_r.getPlayerByUsername(credentials.joueur_username, function (player) {
+            if (player) {
+                if (player.joueur_password === credentials.joueur_password) {
+                    let body = {
+                        joueur_id: player.joueur_id,
+                        joueur_nom: player.joueur_nom,
+                        joueur_prenom: player.joueur_prenom,
+                        joueur_rang: player.joueur_rang,
+                        joueur_mail: player.joueur_mail,
+                        joueur_username: player.joueur_username,
+                        token: 'yolo-token'
+                    };
+
+                    return res.status(200).body(body);
+                }
+            }
+            return res.status(400).body('Identifiants inconnus');
+        });
 
     } catch (err) {
         //TODO
