@@ -26,7 +26,7 @@ exports.getPlayerByID = function(id, callback){
 }
 
 /**
- * Recupération d'un joueur par son username (pour l'authentification)
+ * Recupération du mot de passe d'un joueur par son username (pour l'authentification)
  * @param {number} username du joueur recherché
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
  */
@@ -42,13 +42,29 @@ exports.getPlayerPasswordByUsername = function(username, callback){
 }
 
 /**
+ * Recupération d'un joueur par son username (pour l'authentification)
+ * @param {number} username du joueur recherché
+ * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
+ */
+exports.getPlayerByUsername = function(username, callback){
+    db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows, fields) {
+        if (err) {
+            winston.log("error", "Récupération du joueur par username "+ username);
+            throw err;
+        }
+        winston.log("info", "Récupération du joueur "+ username);
+        callback(rows);
+    });
+}
+
+/**
  * Mise à jour d'un joueur, prend du json en entrée
  * @param Un truc en json
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
  */
 // TODO: Tester le json pour s'assurer que c'est un joueur.
 exports.updatePlayer = function(player, callback){
-    let p = JSON.parse(player);
+    let p = player;
     db.Connection.getInstance().query(
         'UPDATE p_joueurs SET joueur_nom = "' + p.joueur_nom + '",'+
         'joueur_prenom = "' + p.joueur_prenom + '",'+
@@ -72,16 +88,18 @@ exports.updatePlayer = function(player, callback){
  * Création d'un nouveau joueur
  * @param le joueur, en json 
  */
-exports.createPlayer = function(player, callback){
-    let p = JSON.parse(player);
+exports.createNewPlayer = function(player, callback){
+    let p = player;
     db.Connection.getInstance().query(
-        'INSERT INTO p_joueurs (joueur_prenom, joueur_rang, joueur_username, joueur_mail, joueur_password, joueur_admin) VALUES '+
+        'INSERT INTO p_joueurs (joueur_nom, joueur_prenom, joueur_rang, joueur_username, joueur_mail, joueur_password, joueur_admin) VALUES ('+
+        '"' + p.joueur_nom + '",'+
+        '"' + p.joueur_prenom + '",'+
         '"' + p.joueur_rang + '",'+
         '"' + p.joueur_username + '",'+
         '"' + p.joueur_mail + '",'+
         '"' + p.joueur_password + '",'+ //TODO : salt + hash
-        '"' + p.joueur_admin + '"', 
-        function(err, row, field){
+        '"' + p.joueur_admin + '")',
+        function(err, rows, field){
             if (err) {
                 winston.log("error", "Creation du joueur "+ p.joueur_username);
                 throw err;
