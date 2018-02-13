@@ -1,6 +1,6 @@
 /** 
  * @file Le "répertoire" des requêtes en relation avec la table player
- * Les fonctions "query" étant assynchrone, elles prennent en paramêtre un callback, fonction qui s'occupera du traitement du résulat
+ * Les fonctions "query" étant asynchrone, elles prennent en paramêtre un callback, fonction qui s'occupera du traitement du résulat
  * (dans le contexte, l'envoyer par exemple)
 */
 
@@ -78,7 +78,7 @@ exports.createPlayer = function(player, callback){
         '"' + p.joueur_rang + '",'+
         '"' + p.joueur_username + '",'+
         '"' + p.joueur_mail + '",'+
-        '"' + p.joueur_password + '",'+
+        '"' + p.joueur_password + '",'+ //TODO : salt + hash
         '"' + p.joueur_admin + '"', 
         function(err, row, field){
             if (err) {

@@ -33,3 +33,17 @@ exports.fetchPlayers =  function(req, res) {
         //TODO
     }
 };
+
+exports.sendNewPlayer = function (req, res) {
+
+    try {
+        player = JSON.stringify(req.body);
+        player_r.createPlayer(player, function(resultPlayer) {
+            return res.status(200);
+        });
+
+    } catch (err) {
+        //TODO
+    }
+
+};
