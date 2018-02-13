@@ -6,10 +6,10 @@ exports.fetchPlayer = function(req, res) {
 
     try {
         player_r.getPlayerByID(id, function (player) {
-            if (player) {
-                return res.status(200).json(player);
+            if (player.length) {
+                return res.status(200).json(player[0]);
             } else {
-                return res.status(404).json(player);
+                return res.status(404).end();
             }
         });
     } catch (err) {
@@ -33,14 +33,15 @@ exports.fetchPlayers =  function(req, res) {
 exports.sendNewPlayer = function (req, res) {
 
     try {
-        let player = req.body;
+        let newplayer = req.body;
 
-        // if (player_r.getPlayerByUsername(player.joueur_username)[0]) {
-        //     return res.status(409).body('Cet username est déjà utilisé');
-        // }
-
-        player_r.createNewPlayer(player, function(resultPlayer) {
-            return res.status(200);
+        player_r.getPlayerByUsername(newplayer.username, function (player) {
+            if (player.length){
+                return res.status(409).json({error: 'Cet username est déjà utilisé'});
+            }
+            player_r.createNewPlayer(newplayer, function() {
+                return res.status(200).end();
+            });
         });
 
     } catch (err) {
@@ -55,23 +56,22 @@ exports.authenticate = function(req, res) {
 
         let credentials = req.body;
 
-        player_r.getPlayerByUsername(credentials.joueur_username, function (player) {
-            if (player) {
-                if (player.joueur_password === credentials.joueur_password) {
+        player_r.getPlayerByUsername(credentials.username, function (player) {
+            if (player.length) {
+                if (player[0].password === credentials.password) {
                     let body = {
-                        joueur_id: player.joueur_id,
-                        joueur_nom: player.joueur_nom,
-                        joueur_prenom: player.joueur_prenom,
-                        joueur_rang: player.joueur_rang,
-                        joueur_mail: player.joueur_mail,
-                        joueur_username: player.joueur_username,
+                        lastname: player[0].lastname,
+                        firstname: player[0].firstname,
+                        rank: player[0].rank,
+                        email: player[0].email,
+                        username: player[0].username,
                         token: 'yolo-token'
                     };
 
-                    return res.status(200).body(body);
+                    return res.status(200).json(body);
                 }
             }
-            return res.status(400).body('Identifiants inconnus');
+            return res.status(400).json({error: 'Identifiants inconnus'});
         });
 
     } catch (err) {

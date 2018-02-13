@@ -1,8 +1,8 @@
-/** 
+/**
  * @file Le "répertoire" des requêtes en relation avec la table player
- * Les fonctions "query" étant asynchrone, elles prennent en paramêtre un callback, fonction qui s'occupera du traitement du résulat
+ * Les fonctions "query" étant asynchrones, elles prennent en paramètre un callback, fonction qui s'occupera du traitement du résulat
  * (dans le contexte, l'envoyer par exemple)
-*/
+ */
 
 const db = require('./db.js')
 const winston = require('winston')
@@ -15,14 +15,28 @@ const winston = require('winston')
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat (ah, les joies de l'assynchrone)
  */
 exports.getPlayerByID = function(id, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE joueur_id = '+ id, function(err, rows, fields) {
+    db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE joueur_id = '+ id, function(err, rows) {
         if (err) {
             winston.log("error", "Récupération du joueur n°" + id);
             throw err;
         }
         winston.log("info", "Récupération du joueur n°" + id);
-        callback(rows);
-      });
+        if (rows.length) {
+            callback(
+                [{
+                    lastname: rows[0].joueur_nom,
+                    firstname: rows[0].joueur_prenom,
+                    rank: rows[0].joueur_rang,
+                    email: rows[0].joueur_mail,
+                    username: rows[0].joueur_username,
+                    password: rows[0].joueur_password,
+                    admin: rows[0].joueur_admin
+                }]
+            );
+        } else {
+            callback(rows);
+        }
+    });
 }
 
 /**
@@ -31,14 +45,20 @@ exports.getPlayerByID = function(id, callback){
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
  */
 exports.getPlayerPasswordByUsername = function(username, callback){
-    db.Connection.getInstance().query('SELECT joueur_password FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows, fields) {
+    db.Connection.getInstance().query('SELECT joueur_password FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows) {
         if (err) {
             winston.log("error", "Récupération du mot de passe du joueur "+ username);
             throw err;
         }
         winston.log("info", "Récupération du mot de passe du joueur "+ username);
-        callback(rows);
-      });
+        if (rows.length) {
+            callback(
+                [{password: rows.joueur_password}]
+            );
+        } else {
+            callback(rows);
+        }
+    });
 }
 
 /**
@@ -47,13 +67,26 @@ exports.getPlayerPasswordByUsername = function(username, callback){
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
  */
 exports.getPlayerByUsername = function(username, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows, fields) {
+    db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows) {
         if (err) {
             winston.log("error", "Récupération du joueur par username "+ username);
             throw err;
         }
         winston.log("info", "Récupération du joueur "+ username);
-        callback(rows);
+        if (rows.length){
+            callback(
+                [{
+                    lastname: rows[0].joueur_nom,
+                    firstname: rows[0].joueur_prenom,
+                    rank: rows[0].joueur_rang,
+                    email: rows[0].joueur_mail,
+                    username: rows[0].joueur_username,
+                    password: rows[0].joueur_password,
+                    admin: rows[0].joueur_admin}]
+            );
+        } else {
+            callback(rows);
+        }
     });
 }
 
@@ -64,49 +97,47 @@ exports.getPlayerByUsername = function(username, callback){
  */
 // TODO: Tester le json pour s'assurer que c'est un joueur.
 exports.updatePlayer = function(player, callback){
-    let p = player;
     db.Connection.getInstance().query(
-        'UPDATE p_joueurs SET joueur_nom = "' + p.joueur_nom + '",'+
-        'joueur_prenom = "' + p.joueur_prenom + '",'+
-        'joueur_rang = "' + p.joueur_rang + '",'+
-        'joueur_username = "' + p.joueur_username + '",'+
-        'joueur_mail = "' + p.joueur_mail + '",'+
-        'joueur_password = "' + p.joueur_password + '",'+
-        'joueur_admin = "' + p.joueur_admin + '",'+
-        'WHERE joueur_id = "' + p.joueur_id + '"', 
-        function(err, row, field){
+        'UPDATE p_joueurs SET joueur_nom = "' + player.lastname + '",'+
+        'joueur_prenom = "' + player.firstname + '",'+
+        'joueur_rang = "' + player.rank + '",'+
+        'joueur_username = "' + player.username + '",'+
+        'joueur_mail = "' + player.email + '",'+
+        'joueur_password = "' + player.password + '",'+
+        'joueur_admin = "' + player.admin + '",'+
+        'WHERE joueur_id = "' + player.id + '"',
+        function(err, rows){
             if (err) {
-                winston.log("error", "Mise à jour du joueur "+ p.joueur_username);
+                winston.log("error", "Mise à jour du joueur "+ player.username);
                 throw err;
             }
-            winston.log("info", "Mise à jour du joueur "+ p.joueur_username);
+            winston.log("info", "Mise à jour du joueur "+ player.username);
             callback(rows);
-     })
+        })
 }
 
 /**
  * Création d'un nouveau joueur
- * @param le joueur, en json 
+ * @param le joueur, en json
  */
 exports.createNewPlayer = function(player, callback){
-    let p = player;
     db.Connection.getInstance().query(
         'INSERT INTO p_joueurs (joueur_nom, joueur_prenom, joueur_rang, joueur_username, joueur_mail, joueur_password, joueur_admin) VALUES ('+
-        '"' + p.joueur_nom + '",'+
-        '"' + p.joueur_prenom + '",'+
-        '"' + p.joueur_rang + '",'+
-        '"' + p.joueur_username + '",'+
-        '"' + p.joueur_mail + '",'+
-        '"' + p.joueur_password + '",'+ //TODO : salt + hash
-        '"' + p.joueur_admin + '")',
-        function(err, rows, field){
+        '"' + player.lastname + '",'+
+        '"' + player.firstname + '",'+
+        '"' + player.rank + '",'+
+        '"' + player.username + '",'+
+        '"' + player.email + '",'+
+        '"' + player.password + '",'+
+        '"' + player.admin + '")',
+        function(err, rows){
             if (err) {
-                winston.log("error", "Creation du joueur "+ p.joueur_username);
+                winston.log("error", "Creation du joueur "+ player.username);
                 throw err;
             }
-            winston.log("info", "Creation du joueur "+ p.joueur_username);
+            winston.log("info", "Creation du joueur "+ player.username);
             callback(rows);
-     })
+        })
 }
 
 exports.getAllPlayers = function(callback) {
@@ -115,7 +146,15 @@ exports.getAllPlayers = function(callback) {
             winston.log('error', 'Impossible de récupérer tous les joueurs');
             throw err;
         }
-        winston.log('info', 'getAllPlayers');
-        callback(rows);
+        winston.log('info', 'Récupération de tous les joueurs');
+        callback(rows.map(function(elem) {
+            return {lastname: elem.joueur_nom,
+                firstname: elem.joueur_prenom,
+                rank: elem.joueur_rang,
+                email: elem.joueur_mail,
+                username: elem.joueur_username,
+                password: elem.joueur_password,
+                admin: elem.joueur_admin}
+        }));
     });
 };
