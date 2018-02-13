@@ -13,17 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./db/db");
 db.init();
 
-<<<<<<< HEAD
-db.init()
-player_r.getPlayerPasswordByUsername('MakeUsWhole')
-=======
 const routes = require('./routes/routes');
 
 let router = express.Router();
 routes.doRouting(router);
 
 app.use('/api', router);
->>>>>>> 462b978259e2d5eb3755304d718488c3a6194289
 
 app.get('/', function (req, res) {
     res.send('Hello World!')
