@@ -92,10 +92,11 @@ exports.getPlayerByUsername = function(username, callback){
 
 /**
  * Mise à jour d'un joueur, prend du json en entrée
- * @param Un truc en json
+ * @param Un joueur
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
  */
-// TODO: Tester le json pour s'assurer que c'est un joueur.
+/*
+//Cette fonction est pour l'instant inutile.
 exports.updatePlayer = function(player, callback){
     db.Connection.getInstance().query(
         'UPDATE p_joueurs SET joueur_nom = "' + player.lastname + '",'+
@@ -115,6 +116,7 @@ exports.updatePlayer = function(player, callback){
             callback(rows);
         })
 }
+*/
 
 /**
  * Création d'un nouveau joueur
@@ -140,7 +142,7 @@ exports.createNewPlayer = function(player, callback){
         })
 }
 
-exports.getAllPlayers = function(callback) {
+exports.getAllPlayers = function() {
     db.Connection.getInstance().query('SELECT * FROM p_joueurs', function(err, rows, fields) {
         if (err) {
             winston.log('error', 'Impossible de récupérer tous les joueurs');
@@ -158,3 +160,15 @@ exports.getAllPlayers = function(callback) {
         }));
     });
 };
+
+exports.deletePlayer = function(username, callback){
+    db.Connection.getInstance().query('DELETE FROM p_joueurs WHERE joueur_username = "'+username+'"',
+    function(err, rows){
+        if(err){
+            winston.log("error", "Erreur pendant la suppression de l'utilisateur " +username)
+            throw err
+        }
+        winston.log("info","Suppression du joueur " + username)
+        callback(rows);
+    })
+}

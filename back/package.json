@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha",
+    "test": "node node_modules/mocha/bin/mocha --recursive --exit",
     "start": "node src/app.js",
     "gdoc": "node_modules/.bin/jsdoc -r src"
   },
