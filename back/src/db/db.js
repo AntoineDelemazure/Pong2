@@ -47,7 +47,7 @@ exports.init = function(){
     Connection.getInstance().connect(
         function(err) {
             if (err){
-                winston.log('error', 'La connexion a échoué', err);
+                winston.log('error', 'La connexion a échoué');
                 throw err;
             }
         });
