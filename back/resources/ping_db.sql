@@ -21,7 +21,8 @@ CREATE TABLE p_joueurs
 	joueur_mail VARCHAR(100),
 	joueur_password VARCHAR(100),
 	joueur_admin BOOLEAN NOT NULL,
-	PRIMARY KEY (joueur_id)
+	PRIMARY KEY (joueur_id),
+	CONSTRAINT UC_Joueur UNIQUE (joueur_username,joueur_mail)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='Table des joueurs';
 
 CREATE TABLE p_tournois
