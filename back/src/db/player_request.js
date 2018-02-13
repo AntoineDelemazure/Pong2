@@ -10,6 +10,7 @@ const winston = require('winston')
 
 /**
  * Recupération d'un joueur par son id
+ * Ne servira probablement pas
  * @param {number} l'id du joueur recherché
  * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat (ah, les joies de l'assynchrone)
  */
