@@ -16,7 +16,8 @@ export class UserService {
     }
 
     create(user: User) {
-        return this.http.post('/api/users', user);
+      return this.http.post('/api/users', user);
+      //return this.http.post('localhost:1337/api/signup', user);
     }
 
     update(user: User) {
