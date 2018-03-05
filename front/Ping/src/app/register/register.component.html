@@ -6,12 +6,12 @@
         <h3 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h3>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Nom</h2>
-          <input type="text" class="form-control" id="lastname" name="nom" [(ngModel)]="model.lastName" #firstName="ngModel" required />
+          <input type="text" class="form-control" id="lastname" name="nom" [(ngModel)]="model.lastname" #firstName="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">Le nom est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
           <h2>Prenom</h2>
-          <input type="text" class="form-control" id="firstName" name="prenom" [(ngModel)]="model.firstName" #lastName="ngModel" required />
+          <input type="text" class="form-control" id="firstName" name="prenom" [(ngModel)]="model.firstname" #lastName="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">Le prénom est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">

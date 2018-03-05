@@ -5,6 +5,7 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
+import {current} from "codelyzer/util/syntaxKind";
 /**
  * Affiche les informations d'un utilisateur
  */
@@ -31,6 +32,7 @@ export class ProfilComponent implements OnInit {
   )
   {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser.id);
   }
 
   ngOnInit() {
