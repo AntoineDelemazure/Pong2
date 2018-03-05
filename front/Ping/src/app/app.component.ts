@@ -1,3 +1,7 @@
+/**
+ * Composant qui gère la barre de navigation ainsi que le "router-outlet" qui affiche les différents composants lors de la navigation sur le site
+ */
+
 import { Component } from '@angular/core';
 import {User} from "./_models/user";
 import {UserService} from "./_services/user.service";
@@ -21,11 +25,16 @@ export class AppComponent {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+  /**
+   * permet de récupérer l'utilisateur courant (c.à.d connecté) à chaque changement de composant dans le router-outlet
+   */
   onActivate(){
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-
+  /**
+   * Gère la déconnexion à partir du lien de la barre de navigation
+   */
   private logout(){
     this.authentificationService.logout();
     this.router.navigate(["['/']"]);

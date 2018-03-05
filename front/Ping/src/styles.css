@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image : url('https://images.bigcartel.com/product_images/163938763/PING-PONG-2-bis.jpg?auto=format&fit=max&h=1000&w=1000');
+  background-size : cover;
+}
