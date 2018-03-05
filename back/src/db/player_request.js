@@ -11,8 +11,8 @@ const winston = require('winston')
 /**
  * Recupération d'un joueur par son id
  * Ne servira probablement pas
- * @param {number} l'id du joueur recherché
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat (ah, les joies de l'assynchrone)
+ * @param {number} id - id du joueur recherché
+ * @param {function} callback - fonction qui sera appelé après, pour faire quelque chose du résultat (ah, les joies de l'assynchrone)
  */
 exports.getPlayerByID = function(id, callback){
     db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE joueur_id = '+ id, function(err, rows) {
@@ -120,7 +120,8 @@ exports.updatePlayer = function(player, callback){
 
 /**
  * Création d'un nouveau joueur
- * @param le joueur, en json
+ * @param {object} player - joueur, dans un objet javascript
+ * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.createNewPlayer = function(player, callback){
     db.Connection.getInstance().query(
