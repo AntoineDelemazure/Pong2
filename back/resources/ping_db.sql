@@ -4,63 +4,63 @@
 ALTER DATABASE ping_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Drop les tables
-DROP TABLE IF EXISTS p_joue;
-DROP TABLE IF EXISTS p_participe;
-DROP TABLE IF EXISTS p_matchs;
-DROP TABLE IF EXISTS p_tournois;
-DROP TABLE IF EXISTS p_joueurs;
+DROP TABLE IF EXISTS p_play;
+DROP TABLE IF EXISTS p_participate;
+DROP TABLE IF EXISTS p_matches;
+DROP TABLE IF EXISTS p_tournaments;
+DROP TABLE IF EXISTS p_players;
 
 -- Crée les tables
-CREATE TABLE p_joueurs
+CREATE TABLE p_players
 (
-	joueur_id BIGINT NOT NULL AUTO_INCREMENT,
-	joueur_nom VARCHAR(100) NOT NULL,
-	joueur_prenom VARCHAR(100) NOT NULL,
-	joueur_rang INTEGER,
-	joueur_username VARCHAR(100),
-	joueur_mail VARCHAR(100),
-	joueur_password VARCHAR(100),
-	joueur_admin BOOLEAN NOT NULL,
-	PRIMARY KEY (joueur_id),
-	CONSTRAINT UC_Joueur UNIQUE (joueur_username,joueur_mail)
+	player_id BIGINT NOT NULL AUTO_INCREMENT,
+	player_name VARCHAR(100) NOT NULL,
+	player_forename VARCHAR(100) NOT NULL,
+	player_rank INTEGER,
+	player_username VARCHAR(100),
+	player_mail VARCHAR(100),
+	player_password VARCHAR(100),
+	player_admin BOOLEAN NOT NULL,
+	PRIMARY KEY (player_id),
+	CONSTRAINT UC_Player UNIQUE (player_username,player_mail)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='Table des joueurs';
 
-CREATE TABLE p_tournois
+CREATE TABLE p_tournaments
 (
-	tournoi_id BIGINT NOT NULL AUTO_INCREMENT,
-	tournoi_date DATETIME NOT NULL,
-	tournoi_termine BOOLEAN NOT NULL,
-	tournoi_ouvert BOOLEAN NOT NULL,
-	tournoi_tour_actuel INTEGER,
-	tournoi_arbitre_id BIGINT,
-	PRIMARY KEY (tournoi_id),
-	FOREIGN KEY (tournoi_arbitre_id) REFERENCES p_joueurs(joueur_id) ON DELETE SET NULL 
+	tournament_id BIGINT NOT NULL AUTO_INCREMENT,
+	tournament_date DATETIME NOT NULL,
+	tournament_finish BOOLEAN NOT NULL,
+	tournament_open BOOLEAN NOT NULL,
+	tournament_actual_turn INTEGER,
+	tournament_referee_id BIGINT,
+	PRIMARY KEY (tournament_id),
+	FOREIGN KEY (tournament_referee_id) REFERENCES p_players(player_id) ON DELETE SET NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des tournois';
 
-CREATE TABLE p_matchs
+CREATE TABLE p_matches
 (
 	match_id BIGINT NOT NULL AUTO_INCREMENT,
-	match_tour INTEGER,
+	match_turn INTEGER,
 	match_tournament_id BIGINT NOT NULL,
 	PRIMARY KEY (match_id),
-	FOREIGN KEY (match_tournament_id) REFERENCES p_tournois(tournoi_id) ON DELETE CASCADE	
+	FOREIGN KEY (match_tournament_id) REFERENCES p_tournaments(tournament_id) ON DELETE CASCADE	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table des matchs';
 
-CREATE TABLE p_participe
+CREATE TABLE p_participates
 (
-	participe_tournoi_id BIGINT NOT NULL,
-	participe_joueur_id BIGINT NOT NULL,
-	PRIMARY KEY (participe_tournoi_id,participe_joueur_id),
-	FOREIGN KEY (participe_tournoi_id) REFERENCES p_tournois(tournoi_id) ON DELETE CASCADE,
-	FOREIGN KEY (participe_joueur_id) REFERENCES p_joueurs(joueur_id) ON DELETE CASCADE
+	participates_tournament_id BIGINT NOT NULL,
+	participates_player_id BIGINT NOT NULL,
+	PRIMARY KEY (participates_tournament_id,participates_player_id),
+	FOREIGN KEY (participates_tournament_id) REFERENCES p_tournaments(tournament_id) ON DELETE CASCADE,
+	FOREIGN KEY (participates_player_id) REFERENCES p_players(player_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table participe';
 
-CREATE TABLE p_joue
+CREATE TABLE p_plays
 (
-	joue_score INT,
-	joue_match_id BIGINT NOT NULL,
-	joue_joueur_id BIGINT NOT NULL,
-	PRIMARY KEY (joue_match_id,joue_joueur_id),
-	FOREIGN KEY (joue_match_id) REFERENCES p_matchs(match_id) ON DELETE CASCADE,
-	FOREIGN KEY (joue_joueur_id) REFERENCES p_joueurs(joueur_id) ON DELETE CASCADE
+	plays_socre INT,
+	plays_match_id BIGINT NOT NULL,
+	plays_player_id BIGINT NOT NULL,
+	PRIMARY KEY (plays_match_id,plays_player_id),
+	FOREIGN KEY (plays_match_id) REFERENCES p_matches(match_id) ON DELETE CASCADE,
+	FOREIGN KEY (plays_player_id) REFERENCES p_players(player_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table joue';
