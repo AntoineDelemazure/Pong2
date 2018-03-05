@@ -5,15 +5,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-liste-tournois',
+  selector: 'app-tournament-list',
   templateUrl: './tournament-list.component.html',
   styleUrls: ['./tournament-list.component.css']
 })
 export class ListeTournoisComponent implements OnInit {
 
-  tournament;
+  private _tournaments;
 
-  constructor() { }
+  constructor() {
+
+
+  }
 
   ngOnInit() {
   }
