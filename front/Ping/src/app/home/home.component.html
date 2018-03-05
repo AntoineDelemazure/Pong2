@@ -1,18 +1,20 @@
 ﻿﻿<div *ngIf="currentUser != null;then logged else notLogged"></div>
   <ng-template #logged>
-    <div class="col-md-6 col-md-offset-3">
-        <h1>Bonjour {{currentUser.firstName}}!</h1>
-        <p>Vous êtes connecté au Ping-Pong de Maizières-lès-Metz</p>
-        <h3>Tout les utilisateurs enregistrés :</h3>
-        <ul>
-            <li *ngFor="let user of users">
-              <!--Rajout de l'email à afficher-->
-                {{user.username}} ({{user.firstName}} {{user.lastName}} {{user.email}})
-                - <a (click)="deleteUser(user.id)">Delete</a>
-            </li>
-        </ul>
-        <p><a  (click)="logout()" >Déconnexion</a></p>
-    </div>
+
+    <app-tournament-list></app-tournament-list>
+    <!--<div class="col-md-6 col-md-offset-3">-->
+        <!--<h1>Bonjour {{currentUser.firstName}}!</h1>-->
+        <!--<p>Vous êtes connecté au Ping-Pong de Maizières-lès-Metz</p>-->
+        <!--<h3>Tout les utilisateurs enregistrés :</h3>-->
+        <!--<ul>-->
+            <!--<li *ngFor="let user of users">-->
+              <!--&lt;!&ndash;Rajout de l'email à afficher&ndash;&gt;-->
+                <!--{{user.username}} ({{user.firstName}} {{user.lastName}} {{user.email}})-->
+                <!-- - <a (click)="deleteUser(user.id)">Delete</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<p><a  (click)="logout()" >Déconnexion</a></p>-->
+    <!--</div>-->
   </ng-template>
 
 
