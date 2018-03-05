@@ -1,41 +1,44 @@
-﻿<div class="container">
+<div class="container" >
   <div class="col-md-5">
     <div class="form-area">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
       <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
         <br style="clear:both">
-        <h3 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h3>
+        <h1 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h1>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Nom</h2>
+          <h3>Nom</h3>
           <input type="text" class="form-control" id="lastname" name="nom" [(ngModel)]="model.lastName" #firstName="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">Le nom est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Prenom</h2>
+          <h3>Prenom</h3>
           <input type="text" class="form-control" id="firstName" name="prenom" [(ngModel)]="model.firstName" #lastName="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">Le prénom est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Email</h2>
-          <input type="text" class="form-control" id="email" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required>
+          <h3>Email</h3>
+          <input type="email" class="form-control" id="email" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required>
           <div *ngIf="f.submitted" class="help-block">L'email est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Rang</h2>
+          <h3>Rang</h3>
           <input type="text" class="form-control" id="rang" name="rang" [(ngModel)]="model.rang" #email="ngModel" required>
           <div *ngIf="f.submitted" class="help-block">Le rang est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Identifiant</h2>
+          <h3>Identifiant</h3>
           <input type="text" class="form-control" name="username" placeholder="Identifiant " [(ngModel)]="model.username" #username="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">L'identifiant est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Mot de Passe</h2>
+          <h3>Mot de Passe</h3>
           <input type="password" class="form-control" name="password" placeholder="Mot de Passe (minimum 6 caractères) " [(ngModel)]="model.password" #password="ngModel" required />
           <div *ngIf="f.submitted" class="help-block">Le mot de passe est requis</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted }">
-          <h2>Confirmation de Mot de Passe</h2>
+          <h3>Confirmation de Mot de Passe</h3>
           <input type="password" class="form-control" id="pass2" name="subject" placeholder="Confirmation Mot de Passe " required>
           <div *ngIf="f.submitted && !username.valid" class="help-block">La confirmation du mot de passe est requis</div>
         </div>
@@ -45,6 +48,8 @@
           <a [routerLink]="['/login']" class="btn btn-link">Annuler</a>
         </div>
       </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

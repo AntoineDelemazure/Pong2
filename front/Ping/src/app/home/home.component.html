@@ -1,4 +1,4 @@
-﻿<div *ngIf="currentUser != null;then logged else notLogged"></div>
+﻿﻿<div *ngIf="currentUser != null;then logged else notLogged"></div>
   <ng-template #logged>
 
     <app-tournament-list></app-tournament-list>
@@ -20,11 +20,15 @@
 
   <ng-template #notLogged>
     <div class="container">
-      <h1>Bienvenue !</h1>
+      <div class="panel panel-default">
 
-      Ici vous pouvez consulter des tournois en ligne et même vous y inscrire !
+        <div class="panel-body">
+      <h1 style="margin-bottom: 25px; text-align: center;">Bienvenue !</h1>
+          Ici vous pouvez consulter des tournois en ligne et même vous y inscrire !
 
-      Il vous faut un compte pour ça, donc allez dans Inscription ! :)
+        Il vous faut un compte pour ça, donc allez dans Inscription ! :)
+        </div>
+      </div>
     </div>
   </ng-template>
 

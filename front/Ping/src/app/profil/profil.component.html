@@ -1,17 +1,52 @@
 <div class="container">
   <div class="col-md-5">
     <div class="form-area">
+      <div class="panel panel-default">
 
+        <div class="panel-body">
       <h1>Profil connecte </h1><br>
 
-     Nom: {{currentUser.firstName}} <br>
-      Prenom: {{currentUser.lastName}}  <br>
-      Identifiant: {{currentUser.username}}  <br>
-      E-mail: {{currentUser.email}}  <br>
 
 
+          <div class="row">
+            <div class="col-sm-5">
+              <h3> Nom </h3>
+            </div>
+            <div class="col-sm-7">
+              <h3 style="font-family:courier;"> {{currentUser.lastName}}</h3>
+            </div>
+          </div>
+          <div class="row">
 
+            <div class="col-sm-5">
+              <h3> Prenom </h3>
+            </div>
+            <div class="col-sm-7">
+              <h3 style="font-family:courier;"> {{currentUser.firstName}}</h3>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-sm-5">
+              <h3> Identifiant </h3>
+            </div>
+            <div class="col-sm-7">
+              <h3 style="font-family:courier;"> {{currentUser.username}}</h3>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-sm-5">
+              <h3> E-mail </h3>
+            </div>
+            <div class="col-sm-7">
+              <h3 style="font-family:courier;"> {{currentUser.email}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 
