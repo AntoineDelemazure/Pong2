@@ -140,6 +140,10 @@ exports.createNewPlayer = function(player, callback){
         })
 }
 
+/**
+ * Retourne l'ensemble des joueurs stockés dans la base de l'application
+ * @param callback - fonction traitant les données de retour
+ */
 exports.getAllPlayers = function(callback) {
     db.Connection.getInstance().query('SELECT * FROM p_joueurs', function(err, rows, fields) {
         if (err) {

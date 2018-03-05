@@ -54,7 +54,6 @@ exports.sendNewPlayer = function (req, res) {
 exports.authenticate = function(req, res) {
 
     try {
-
         let credentials = req.body;
 
         player_r.getPlayerByUsername(credentials.username, function (player) {
