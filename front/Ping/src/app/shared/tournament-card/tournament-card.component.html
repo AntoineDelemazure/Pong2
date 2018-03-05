@@ -1,15 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-      <a href="#/tournament/1">
-        <h4>{{ current_tournament.name }}</h4>
-      </a>
-  </div>
-  <div class="panel-body">
-    {{current_tournament.date}}<br/>
+<div class="col-sm-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="#/tournament/1">
+          <h4>{{ tournament.name }}</h4>
+        </a>
+    </div>
+    <div class="panel-body">
+      {{tournament.date}}<br/>
 
-    <span *ngIf="current_tournament.finished"> Terminé </span>
-    <span *ngIf="current_tournament.open && !current_tournament.finished"> Ouvert </span>
-    <span *ngIf="!current_tournament.finished && !current_tournament.open"> Fermé </span>
-  </div>
+      <span *ngIf="tournament.finished"> Terminé </span>
+      <span *ngIf="tournament.open && !tournament.finished"> Ouvert </span>
+      <span *ngIf="!tournament.finished && !tournament.open"> Fermé </span>
+    </div>
 
+  </div>
 </div>

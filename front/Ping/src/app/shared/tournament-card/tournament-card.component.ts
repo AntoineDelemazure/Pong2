@@ -13,17 +13,10 @@ import {tournament} from "../../_models/tournament";
 })
 export class TournamentCardComponent implements OnInit {
 
-  private current_tournament: tournament;
-  //@Input() tournament: tournament;
+  //private tournament: any = {};
+  @Input() tournament: any;
 
   constructor() {
-    this.current_tournament = new tournament();
-
-    this.current_tournament.name = "blablablabla";
-    this.current_tournament.date = "01/01/2018";
-    this.current_tournament.finished = false;
-    this.current_tournament.open = false;
-    this.current_tournament.tour = 0;
   }
 
   ngOnInit() {

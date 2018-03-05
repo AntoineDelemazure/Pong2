@@ -1,12 +1,8 @@
 <div class="container">
-  <!--<app-tournament-card *ngFor="let tournament of tournaments" [tournament]="tournament"></app-tournament-card>-->
   <div class="row">
-    <div class="col-sm-4">
-      <app-tournament-card></app-tournament-card>
-    </div>
-    <div class="col-sm-4">
-      <app-tournament-card></app-tournament-card>
-    </div>
+
+      <app-tournament-card *ngFor="let tournament of _tournaments" [tournament] = "tournament"></app-tournament-card>
+
   </div>
 </div>
 
