@@ -19,7 +19,7 @@ describe("Test de la table p_joueurs", function () {
             database: 'ping_db'
         })
         player = {
-            name      : "Abitbol",
+            lastname      : "Abitbol",
             firstname   : "Georges",
             rank     : 1,
             email     : "laclasse@incarne.com",
@@ -31,7 +31,7 @@ describe("Test de la table p_joueurs", function () {
     })//end before
 
     it("should create a new player in db", function(done){
-        request.createPlayer(player, function(row){
+        request.createNewPlayer(player, function(row){
             if(row.constructor.name == "OkPacket")
                 done();
             else
@@ -41,8 +41,8 @@ describe("Test de la table p_joueurs", function () {
 
     it("should have the right name", function(done){
         request.getPlayerByUsername(player.username, function(row){
-            if(row[0].name != player.name){
-                console.log(row.name + "!=" + player.name)
+            if(row[0].lastname != player.lastname){
+                console.log(row[0].lastname + "!=" + player.lastname)
                 done(new Error("Les données sont manifestement erronées"))
             }
             else
