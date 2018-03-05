@@ -4,8 +4,8 @@
 ALTER DATABASE ping_db CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Drop les tables
-DROP TABLE IF EXISTS p_play;
-DROP TABLE IF EXISTS p_participate;
+DROP TABLE IF EXISTS p_plays;
+DROP TABLE IF EXISTS p_participates;
 DROP TABLE IF EXISTS p_matches;
 DROP TABLE IF EXISTS p_tournaments;
 DROP TABLE IF EXISTS p_players;
