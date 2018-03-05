@@ -1,5 +1,6 @@
 const player_r = require('../db/player_request');
 const db = require('../db/db');
+const jwt = require('jsonwebtoken');
 
 exports.fetchPlayer = function(req, res) {
     let id = req.params.id;
@@ -59,16 +60,20 @@ exports.authenticate = function(req, res) {
         player_r.getPlayerByUsername(credentials.username, function (player) {
             if (player.length) {
                 if (player[0].password === credentials.password) {
-                    let body = {
-                        lastname: player[0].lastname,
-                        firstname: player[0].firstname,
-                        rank: player[0].rank,
-                        email: player[0].email,
-                        username: player[0].username,
-                        token: 'yolo-token'
+
+                    const payload = {
+                        admin: player[0].admin
+                    }
+
+                    let token = jwt.sign(payload, process.env.SECRET, {
+                        expiresIn: "24h"
+                    });
+
+                    let response = {
+                        token: token
                     };
 
-                    return res.status(200).json(body);
+                    return res.status(200).json(response);
                 }
             }
             return res.status(400).json({error: 'Identifiants inconnus'});
