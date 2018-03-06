@@ -10,7 +10,7 @@ import {tournament} from "../_models/tournament";
   templateUrl: './tournament-list.component.html',
   styleUrls: ['./tournament-list.component.css']
 })
-export class ListeTournoisComponent implements OnInit {
+export class TournamentListComponent implements OnInit {
 
   private _tournaments: tournament[] = new Array<tournament>();
 

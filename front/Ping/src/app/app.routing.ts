@@ -6,14 +6,15 @@ import { AuthGuard } from './_guards/index';
 import {HomeComponent} from "./home/home.component";
 import {InvitationComponent} from "./invitation/invitation.component";
 import {ProfilComponent} from "./profil/profil.component";
+import {TournamentListComponent} from "./tournament-list/tournament-list.component";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  // chemin test profil
-  { path:'profil', component: ProfilComponent},
+  { path: 'profil', component: ProfilComponent},
+  { path: 'tournament', component: TournamentListComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

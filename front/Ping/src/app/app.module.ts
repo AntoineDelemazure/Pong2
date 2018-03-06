@@ -18,7 +18,7 @@ import {routing} from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { ProfilComponent } from './profil/profil.component';
-import { ListeTournoisComponent } from './tournament-list/tournament-list.component';
+import { TournamentListComponent} from './tournament-list/tournament-list.component';
 import { TournamentCardComponent } from './shared/tournament-card/tournament-card.component';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { TournamentCardComponent } from './shared/tournament-card/tournament-car
     HomeComponent,
     InvitationComponent,
     ProfilComponent,
-    ListeTournoisComponent,
+    TournamentListComponent,
     TournamentCardComponent,
   ],
   providers: [
