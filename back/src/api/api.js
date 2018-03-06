@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken'); // La librairie qui permet de générer des
  * Répond à la requête /players/id
  * Renvoie en JSON le joueur correspondant à la valeur id
  * @param {object} req - la requete (sous forme d'objet JS), on y récupere l'id
- * @param {object} res - la réponse à la requete. Elle est (probablement) envoyé juste après avoir été initialisée.
+ * @param {object} res - la réponse à la requete. Elle est (probablement) envoyée juste après avoir été initialisée.
  */
 exports.fetchPlayer = function(req, res) {
     let id = req.params.id;
@@ -34,7 +34,7 @@ exports.fetchPlayer = function(req, res) {
  * Répond à la requête /players
  * Renvoie en JSON tout les joueurs en base
  * @param {object} req - la requete (sous forme d'objet JS)
- * @param {object} res - la réponse à la requete. Elle est (probablement) envoyé juste après avoir été initialisée.
+ * @param {object} res - la réponse à la requete. Elle est (probablement) envoyée juste après avoir été initialisée.
  */
 exports.fetchPlayers =  function(req, res) {
     winston.log("info", "GET on /players. SEND ALL THE PLAYERS !")
@@ -53,7 +53,7 @@ exports.fetchPlayers =  function(req, res) {
  * Répond à la requête /singup
  * Crée un nouveau joueur en base
  * @param {object} req - la requete (sous forme d'objet JS), on récupère dans le corps les identifiants donnés
- * @param {object} res - la réponse à la requete. Elle est (probablement) envoyé juste après avoir été initialisée.
+ * @param {object} res - la réponse à la requete. Elle est (probablement) envoyée juste après avoir été initialisée.
  */
 exports.sendNewPlayer = function (req, res) {
     winston.log('info', 'POST on /signup. "Un nouveau joueur ! Venu d\'ailleurs ! -Ooooooh !')
@@ -79,7 +79,7 @@ exports.sendNewPlayer = function (req, res) {
  * Répond à la requête /signin
  * Permet la connexion, renvoie un token. Le token contient le statut admin du joueur connecté et a une validité de 24h.
  * @param {object} req - la requete (sous forme d'objet JS), on recupere dans le corps les identifiants donnés
- * @param {object} res - la réponse à la requete. Elle est (probablement) envoyé juste après avoir été initialisée.
+ * @param {object} res - la réponse à la requete. Elle est (probablement) envoyée juste après avoir été initialisée.
  */
 exports.authenticate = function(req, res) {
     winston.log('info', 'POST on /singin. Tentative de connexion d\'un joueur');
