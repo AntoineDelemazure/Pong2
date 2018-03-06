@@ -6,7 +6,7 @@ const request = require('../../../src/db/player_request')
 const mysql = require('mysql');
 
 
-describe("Test de la table p_joueurs", function () {
+describe("Test de la table p_players", function () {
     let connection
     let player
     let player2
@@ -19,13 +19,13 @@ describe("Test de la table p_joueurs", function () {
             database: 'ping_db'
         })
         player = {
-            lastname      : "Abitbol",
-            firstname   : "Georges",
-            rank     : 1,
+            lastname  : "Abitbol",
+            firstname : "Georges",
+            rank      : 1,
             email     : "laclasse@incarne.com",
-            username : "LHommeLePlusClasseDuMonde",
-            password : 1234,
-            admin    : 1
+            username  : "LHommeLePlusClasseDuMonde",
+            password  : 1234,
+            admin     : 1
         }//end player
         done();
     })//end before

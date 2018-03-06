@@ -7,7 +7,7 @@ const execsql = require('exec-sql');
 const winston = require('winston');
 
 //TODO : Propre
-let directory_name = "../resources/ping_db.sql";
+let directory_name = "./resources/ping_db.sql";
 
 /** 
  * Singleton d'instance de connexion
@@ -48,10 +48,10 @@ exports.init = function(){
             }
         });
 
-    Connection.getInstance().query("SELECT * FROM p_joueurs;",
+    Connection.getInstance().query("SELECT * FROM p_players;",
         function(err) {
             if(err){
-                winston.log('info', 'Table p_joueurs inaccessible, création de la bdd');
+                winston.log('info', 'Table p_players inaccessible, création de la bdd');
                 create();
             }
         });
