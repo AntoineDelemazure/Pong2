@@ -3,7 +3,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import {tournament} from "../_models/tournament";
+import {Tournament} from "../_models/tournament";
 
 @Component({
   selector: 'app-tournament-list',
@@ -12,22 +12,22 @@ import {tournament} from "../_models/tournament";
 })
 export class TournamentListComponent implements OnInit {
 
-  private _tournaments: tournament[] = new Array<tournament>();
+  private _tournaments: Tournament[] = new Array<Tournament>();
 
   constructor() {
-    this._tournaments[0] = new tournament();
+    this._tournaments[0] = new Tournament();
     this._tournaments[0].name = "blablablabla";
     this._tournaments[0].date = "01/01/2018";
     this._tournaments[0].finished = false;
     this._tournaments[0].open = false;
-    this._tournaments[0].tour = 0;
+    this._tournaments[0].currentRound = 0;
 
-    this._tournaments[1] = new tournament();
+    this._tournaments[1] = new Tournament();
     this._tournaments[1].name = "blablablabla2";
     this._tournaments[1].date = "02/02/2018";
     this._tournaments[1].finished = false;
     this._tournaments[1].open = true;
-    this._tournaments[1].tour = 0;
+    this._tournaments[1].currentRound = 0;
 
   }
 

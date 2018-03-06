@@ -4,7 +4,7 @@
  */
 
 import {Component, Input, OnInit} from '@angular/core';
-import {tournament} from "../../_models/tournament";
+import {Tournament} from "../../_models/tournament";
 
 @Component({
   selector: 'app-tournament-card',
