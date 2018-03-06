@@ -3,6 +3,7 @@
 */
 
 const player_r = require('../db/player_request');
+const tournaments_r = require('../db/tournament_request')
 const db = require('../db/db');
 const winston = require('winston');
 const jwt = require('jsonwebtoken'); // La librairie qui permet de générer des tokens
@@ -119,3 +120,14 @@ exports.authenticate = function(req, res) {
     }
 
 };
+
+exports.fetchTournaments = function(req, res){
+    winston.log('info', 'GET on /tournaments. GET ALL THE TOURNAMENTS !')
+    try{
+        tournaments_r.getAllTournaments(function(tournaments){
+            return res.status(200).json(tournaments);
+        })
+    }catch(err){
+        //TODO
+    }
+}

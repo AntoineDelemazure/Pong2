@@ -35,7 +35,7 @@ exports.doRouting = function(router) {
         }
     });
 
-    // router.get('/tournaments', api.fetchTournaments);
+    router.get('/tournaments', api.fetchTournaments);
     // router.post('/tournaments', api.createNewTournament);
     // router.get('/tournaments/:id', api.fetchTournament);
     // router.put('/tournaments/:id/open', api.openTournament);
