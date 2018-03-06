@@ -139,7 +139,6 @@ describe("Test de la table p_players", function () {
 */
     after(function (done){
         request.deletePlayer(player.username, function(rows){
-            console.log("pouët !!")
             if(rows.constructor.name == "OkPacket")
                 done();
             else

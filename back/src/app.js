@@ -25,7 +25,7 @@ app.set('port', port);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Initialistion de la base de données
+// Initialisation de la base de données
 db.init();
 
 // Initialisation des routes du routeur
