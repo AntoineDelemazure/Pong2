@@ -8,11 +8,11 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>('/api/users');
+        return this.http.get<User[]>('http://localhost:1337/api/players');
     }
 
     getById(id: number) {
-        return this.http.get('/api/users/' + id);
+        return this.http.get('http://localhost:1337/api/players' + id);
     }
 
     create(user: User) {
@@ -20,10 +20,10 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user);
+        return this.http.put('http://localhost:1337/api/players' + user.id, user);
     }
 
     delete(id: number) {
-        return this.http.delete('/api/users/' + id);
+        return this.http.delete('http://localhost:1337/api/players' + id);
     }
 }
