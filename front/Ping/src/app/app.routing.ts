@@ -7,6 +7,7 @@ import {HomeComponent} from "./home/home.component";
 import {InvitationComponent} from "./invitation/invitation.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {TournamentListComponent} from "./tournament-list/tournament-list.component";
+import {TournamentDetailComponent} from "./tournament-detail/tournament-detail.component";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
@@ -14,7 +15,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profil', component: ProfilComponent},
-  { path: 'tournament', component: TournamentListComponent},
+  { path: 'tournament', component: TournamentDetailComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

@@ -20,6 +20,7 @@ import { InvitationComponent } from './invitation/invitation.component';
 import { ProfilComponent } from './profil/profil.component';
 import { TournamentListComponent} from './tournament-list/tournament-list.component';
 import { TournamentCardComponent } from './shared/tournament-card/tournament-card.component';
+import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { TournamentCardComponent } from './shared/tournament-card/tournament-car
     ProfilComponent,
     TournamentListComponent,
     TournamentCardComponent,
+    TournamentDetailComponent,
   ],
   providers: [
     AuthGuard,
