@@ -1,5 +1,13 @@
+/**
+ * @file Fichier contenant toutes les routes de l'application
+ */
+
 const api = require('../api/api');
 
+/**
+ * Envoie les routes et fonctions liées au routeur
+ * @param {object} router - Routeur express
+ */
 exports.doRouting = function(router) {
     router.get('/players/:id', api.fetchPlayer);
     router.get('/players', api.fetchPlayers);

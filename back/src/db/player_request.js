@@ -4,23 +4,22 @@
  * (dans le contexte, l'envoyer par exemple)
  */
 
-const db = require('./db.js')
-const winston = require('winston')
+const db = require('./db.js');
+const winston = require('winston');
 
 
 /**
  * Recupération d'un joueur par son id
- * Ne servira probablement pas
- * @param {number} l'id du joueur recherché
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat (ah, les joies de l'assynchrone)
+ * @param {number} id - id du joueur recherché
+ * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByID = function(id, callback){
     db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE joueur_id = '+ id, function(err, rows) {
         if (err) {
-            winston.log("error", "Récupération du joueur n°" + id);
+            winston.log("error", "Récupération d'un joueur");
             throw err;
         }
-        winston.log("info", "Récupération du joueur n°" + id);
+        winston.log("info", "Récupération d'un joueur");
         if (rows.length) {
             callback(
                 [{
@@ -37,12 +36,12 @@ exports.getPlayerByID = function(id, callback){
             callback(rows);
         }
     });
-}
+};
 
 /**
  * Recupération du mot de passe d'un joueur par son username (pour l'authentification)
- * @param {number} username du joueur recherché
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
+ * @param {string} username - username du joueur recherché
+ * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerPasswordByUsername = function(username, callback){
     db.Connection.getInstance().query('SELECT joueur_password FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows) {
@@ -59,12 +58,12 @@ exports.getPlayerPasswordByUsername = function(username, callback){
             callback(rows);
         }
     });
-}
+};
 
 /**
  * Recupération d'un joueur par son username (pour l'authentification)
- * @param {number} username du joueur recherché
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
+ * @param {string} username - username du joueur recherché
+ * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByUsername = function(username, callback){
     db.Connection.getInstance().query('SELECT * FROM p_joueurs WHERE p_joueurs.joueur_username = "'+ username +'"', function(err, rows) {
@@ -88,8 +87,9 @@ exports.getPlayerByUsername = function(username, callback){
             callback(rows);
         }
     });
-}
+};
 
+/*
 /**
  * Mise à jour d'un joueur, prend du json en entrée
  * @param Un joueur
@@ -109,10 +109,10 @@ exports.updatePlayer = function(player, callback){
         'WHERE joueur_id = "' + player.id + '"',
         function(err, rows){
             if (err) {
-                winston.log("error", "Mise à jour du joueur "+ player.username);
+                winston.log("error", "Mise à jour d'un joueur");
                 throw err;
             }
-            winston.log("info", "Mise à jour du joueur "+ player.username);
+            winston.log("info", "Mise à jour d'un joueur");
             callback(rows);
         })
 }
@@ -120,7 +120,8 @@ exports.updatePlayer = function(player, callback){
 
 /**
  * Création d'un nouveau joueur
- * @param le joueur, en json
+ * @param {object} player - joueur, dans un objet javascript
+ * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.createNewPlayer = function(player, callback){
     db.Connection.getInstance().query(
@@ -134,17 +135,17 @@ exports.createNewPlayer = function(player, callback){
         '"' + player.admin + '")',
         function(err, rows){
             if (err) {
-                winston.log("error", "Creation du joueur "+ player.username);
+                winston.log("error", "Creation d'un joueur");
                 throw err;
             }
-            winston.log("info", "Creation du joueur "+ player.username);
+            winston.log("info", "Creation d'un joueur");
             callback(rows);
         })
-}
+};
 
 /**
  * Retourne l'ensemble des joueurs stockés dans la base de l'application
- * @param callback - fonction traitant les données de retour
+ * @param {function} callback - fonction traitant les données de retour
  */
 exports.getAllPlayers = function(callback) {
     db.Connection.getInstance().query('SELECT * FROM p_joueurs', function(err, rows, fields) {
@@ -165,14 +166,19 @@ exports.getAllPlayers = function(callback) {
     });
 };
 
+/**
+ * Supprime un joueur de la base de données
+ * @param {string} username - username du joueur à supprimer
+ * @param {function} callback - fonction qui traitera les données retournées
+ */
 exports.deletePlayer = function(username, callback){
     db.Connection.getInstance().query('DELETE FROM p_joueurs WHERE joueur_username = "'+username+'"',
     function(err, rows){
         if(err){
-            winston.log("error", "Erreur pendant la suppression de l'utilisateur " +username)
-            throw err
+            winston.log("error", "Erreur pendant la suppression d'un utilisateur");
+            throw err;
         }
-        winston.log("info","Suppression du joueur " + username)
+        winston.log("info","Suppression d'un joueur");
         callback(rows);
     })
 }
