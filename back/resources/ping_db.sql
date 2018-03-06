@@ -14,11 +14,11 @@ DROP TABLE IF EXISTS p_players;
 CREATE TABLE p_players
 (
 	player_id BIGINT NOT NULL AUTO_INCREMENT,
-	player_name VARCHAR(100) NOT NULL,
-	player_forename VARCHAR(100) NOT NULL,
+	player_lastname VARCHAR(100) NOT NULL,
+	player_firstname VARCHAR(100) NOT NULL,
 	player_rank INTEGER,
 	player_username VARCHAR(100),
-	player_mail VARCHAR(100),
+	player_email VARCHAR(100),
 	player_password VARCHAR(100),
 	player_admin BOOLEAN NOT NULL,
 	PRIMARY KEY (player_id),
@@ -29,9 +29,9 @@ CREATE TABLE p_tournaments
 (
 	tournament_id BIGINT NOT NULL AUTO_INCREMENT,
 	tournament_date DATETIME NOT NULL,
-	tournament_finish BOOLEAN NOT NULL,
+	tournament_finished BOOLEAN NOT NULL,
 	tournament_open BOOLEAN NOT NULL,
-	tournament_actual_turn INTEGER,
+	tournament_current_turn INTEGER,
 	tournament_referee_id BIGINT,
 	PRIMARY KEY (tournament_id),
 	FOREIGN KEY (tournament_referee_id) REFERENCES p_players(player_id) ON DELETE SET NULL 
@@ -57,7 +57,7 @@ CREATE TABLE p_participates
 
 CREATE TABLE p_plays
 (
-	plays_socre INT,
+	plays_score INT,
 	plays_match_id BIGINT NOT NULL,
 	plays_player_id BIGINT NOT NULL,
 	PRIMARY KEY (plays_match_id,plays_player_id),
