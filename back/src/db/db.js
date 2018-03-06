@@ -6,11 +6,7 @@ const mysql = require('mysql');
 const execsql = require('exec-sql');
 const winston = require('winston');
 
-/**
- * Objet qui contiendra les informations de connexion
- */
-//let connection;
-//TODO : A bouger ?
+//TODO : Propre
 let directory_name = "../resources/ping_db.sql";
 
 /** 

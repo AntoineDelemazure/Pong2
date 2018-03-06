@@ -1,34 +1,41 @@
-require('colors');
-require('dotenv').config();
+/**
+ * @file Base de l'application
+ */
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+require('colors'); //Couleurs dans la console
+require('dotenv').config(); //Chargement du fichier .env
 
-const app = express();
+const express = require('express'); //Framework
+const bodyParser = require('body-parser'); //Pour parser le json automatiquement
+const cors = require('cors'); //Pour activer les requêtes cross-origin
 
+const app = express(); //Initialisation de l'application
+
+const db = require("./db/db");
+const routes = require('./routes/routes');
+
+// Autorisation des requêtes cross-origin
 app.use(cors());
 
+// Définition du port du serveur
 let port = process.env.PORT || 1337;
 app.set('port', port);
 
+// Chargement du bodyparser dans l'application
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./db/db");
+// Initialistion de la base de données
 db.init();
 
-const routes = require('./routes/routes');
-
+// Initialisation des routes du routeur
 let router = express.Router();
 routes.doRouting(router);
 
+// Préfixage des routes par '/api'
 app.use('/api', router);
 
-app.get('/', function (req, res) {
-    res.send('Hello World!')
-});
-
+// Start du serveur
 app.listen(app.get('port'), function () {
     console.log('App listening on port 1337')
 });
