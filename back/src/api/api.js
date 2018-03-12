@@ -4,6 +4,7 @@
 
 const player_r = require('../db/player_request');
 const db = require('../db/db');
+const crypt = require('../utils/crypt');
 const winston = require('winston');
 const jwt = require('jsonwebtoken'); // La librairie qui permet de générer des tokens
 
@@ -88,11 +89,13 @@ exports.authenticate = function(req, res) {
 
         player_r.getPlayerByUsername(credentials.username, function (player) {
             if (player.length) {
-                if (player[0].password === credentials.password) {
+                // winston.log('info', `${crypt.sha512(player[0].password, player[0].salt)}`);
+                // winston.log('info', `${player[0].password}`);
+                if (crypt.compare(credentials.password, player[0].password, player[0].salt)) {
 
                     const payload = {
                         admin: player[0].admin
-                    }
+                    };
 
                     let token = jwt.sign(payload, process.env.SECRET, {
                         expiresIn: "24h"

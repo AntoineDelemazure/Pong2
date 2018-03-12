@@ -19,7 +19,7 @@ CREATE TABLE p_players
 	player_rank INTEGER,
 	player_username VARCHAR(100),
 	player_email VARCHAR(100),
-	player_password VARCHAR(100),
+	player_password VARCHAR(300),
 	player_salt VARCHAR(100),
 	player_admin BOOLEAN NOT NULL,
 	PRIMARY KEY (player_id),

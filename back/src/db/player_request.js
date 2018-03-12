@@ -6,6 +6,7 @@
 
 const db = require('./db.js');
 const winston = require('winston');
+const crypt = require('../utils/crypt');
 
 
 /**
@@ -28,7 +29,6 @@ exports.getPlayerByID = function(id, callback){
                     rank: rows[0].player_rank,
                     email: rows[0].player_email,
                     username: rows[0].player_username,
-                    password: rows[0].player_password,
                     admin: rows[0].player_admin
                 }]
             );
@@ -44,7 +44,7 @@ exports.getPlayerByID = function(id, callback){
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerPasswordByUsername = function(username, callback){
-    db.Connection.getInstance().query('SELECT player_password FROM p_players WHERE p_players.player_username = "'+ username +'"', function(err, rows) {
+    db.Connection.getInstance().query('SELECT player_password, player_salt FROM p_players WHERE p_players.player_username = "'+ username +'"', function(err, rows) {
         if (err) {
             winston.log("error", "Récupération du mot de passe du joueur "+ username);
             throw err;
@@ -52,7 +52,10 @@ exports.getPlayerPasswordByUsername = function(username, callback){
         winston.log("info", "Récupération du mot de passe du joueur "+ username);
         if (rows.length) {
             callback(
-                [{password: rows.player_password}]
+                [{
+                    password: rows.player_password,
+                    salt: rows.player_salt
+                }]
             );
         } else {
             callback(rows);
@@ -79,8 +82,9 @@ exports.getPlayerByUsername = function(username, callback){
                     firstname: rows[0].player_firstname,
                     rank: rows[0].player_rank,
                     email: rows[0].player_email,
-                    username: rows[0].player_username,
                     password: rows[0].player_password,
+                    salt: rows[0].player_salt,
+                    username: rows[0].player_username,
                     admin: rows[0].player_admin}]
             );
         } else {
@@ -124,14 +128,16 @@ exports.updatePlayer = function(player, callback){
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.createNewPlayer = function(player, callback){
+    let credentials = crypt.hash(player.password);
     db.Connection.getInstance().query(
-        'INSERT INTO p_players (player_lastname, player_firstname, player_rank, player_username, player_email, player_password, player_admin) VALUES ('+
+        'INSERT INTO p_players (player_lastname, player_firstname, player_rank, player_username, player_email, player_password, player_salt, player_admin) VALUES ('+
         '"' + player.lastname + '",'+
         '"' + player.firstname + '",'+
         '"' + player.rank + '",'+
         '"' + player.username + '",'+
         '"' + player.email + '",'+
-        '"' + player.password + '",'+
+        '"' + credentials.hash + '",'+
+        '"' + credentials.salt + '",'+
         '"' + player.admin + '")',
         function(err, rows){
             if (err) {
@@ -160,7 +166,6 @@ exports.getAllPlayers = function(callback) {
                 rank: elem.player_rank,
                 email: elem.player_email,
                 username: elem.player_username,
-                password: elem.player_password,
                 admin: elem.player_admin}
         }));
     });

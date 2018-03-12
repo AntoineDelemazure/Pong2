@@ -24,7 +24,7 @@ describe("Test de la table p_players", function () {
             rank      : 1,
             email     : "laclasse@incarne.com",
             username  : "LHommeLePlusClasseDuMonde",
-            password  : 1234,
+            password  : "1234",
             admin     : 1
         }//end player
         done();
@@ -83,17 +83,6 @@ describe("Test de la table p_players", function () {
         })
     })
 
-    it("should have the right password", function(done){
-        request.getPlayerByUsername(player.username, function(row){
-            if(row[0].password != player.password){
-                console.log(row.password + "!=" + player.password)
-                done(new Error("Les données sont manifestement erronées"))
-            }
-            else
-                done();
-        })
-    })
-
     it("should have the right admin state", function(done){
         request.getPlayerByUsername(player.username, function(row){
             if(row[0].admin != player.admin){
@@ -104,6 +93,7 @@ describe("Test de la table p_players", function () {
                 done();
         })
     })
+
 /**
  * Les deux fonctions ci-dessous devaient tester le update, mais il ne sert pas
  */
