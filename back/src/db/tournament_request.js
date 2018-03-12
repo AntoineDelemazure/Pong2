@@ -53,3 +53,17 @@ exports.createTournament = function(tournament, callback){
     })
 }
 
+exports.openTournament = function(id, callback){
+    db.Connection.getInstance().query(
+        `UPDATE p_tournaments
+        SET tournament_open = "1"
+        WHERE tournament_id = "${id}"`, function(err, rows, fields){
+        if(err){
+            winston.log('error', `Erreur lors de l'ouverture du tournoi ${id}`)
+            throw err
+        }else{
+            winston.log("info", `Ouverture du tournoi n°${id}`);
+            callback(rows);
+        }
+    })
+}

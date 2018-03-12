@@ -147,9 +147,20 @@ exports.fetchTournament = function(req, res){
     winston.log('info', "GET on /tournament/id, give me the tournament I need")
     try{
         id = req.params.id
-        console.log(id)
         tournaments_r.getTournamentByID(id, function(tournament){
             return res.status(200).json(tournament);
+        })
+    }catch(err){
+        //TODO
+    }
+}
+
+exports.openTournament = function(req, res){
+    winston.log('info', "PUT on /tournament/id/open")
+    try{
+        id = req.params.id
+        tournaments_r.openTournament(id, function(tournament){
+            return res.status(200).json({"info": `Le tournoi ${id} est ouvert !`});
         })
     }catch(err){
         //TODO
