@@ -14,6 +14,8 @@ exports.doRouting = function(router) {
     router.get('/players/:id', api.fetchPlayer);
     router.post('/signup', api.sendNewPlayer);
     router.post('/signin', api.authenticate);
+    router.get('/tournaments/:id', api.fetchTournament);
+
 
     /*
     Verification du token, les routes définies après cette fonction sont soumises à ce traitement
@@ -36,8 +38,7 @@ exports.doRouting = function(router) {
     });
 
     router.get('/tournaments', api.fetchTournaments);
-    // router.post('/tournaments', api.createNewTournament);
-    // router.get('/tournaments/:id', api.fetchTournament);
+    router.post('/tournaments', api.createNewTournament);
     // router.put('/tournaments/:id/open', api.openTournament);
     // router.put('/tournaments/:id/start', api.startTournament);
     // router.put('/tournaments/:id/close', api.closeTournanment);

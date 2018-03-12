@@ -131,3 +131,27 @@ exports.fetchTournaments = function(req, res){
         //TODO
     }
 }
+
+exports.createNewTournament = function(req, res){
+    winston.log('info', "POST on /tournaments. Time for a new tournament")
+    try{
+        tournaments_r.createTournament(req.body, function(tournament){
+            return res.status(200).json({"info": "Tout s'est bien passé"});
+        })
+    }catch(err){
+        //TODO
+    }
+}
+
+exports.fetchTournament = function(req, res){
+    winston.log('info', "GET on /tournament/id, give me the tournament I need")
+    try{
+        id = req.params.id
+        console.log(id)
+        tournaments_r.getTournamentByID(id, function(tournament){
+            return res.status(200).json(tournament);
+        })
+    }catch(err){
+        //TODO
+    }
+}

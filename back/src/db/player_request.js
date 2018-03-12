@@ -14,7 +14,7 @@ const winston = require('winston');
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByID = function(id, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_players WHERE player_id = '+ id, function(err, rows) {
+    db.Connection.getInstance().query(`SELECT * FROM p_players WHERE player_id = ${id}`, function(err, rows) {
         if (err) {
             winston.log("error", "Récupération d'un joueur");
             throw err;
@@ -66,9 +66,9 @@ exports.getPlayerPasswordByUsername = function(username, callback){
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByUsername = function(username, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_players WHERE p_players.player_username = "'+ username +'"', function(err, rows) {
+    db.Connection.getInstance().query(`SELECT * FROM p_players WHERE p_players.player_username = "${username}"`, function(err, rows) {
         if (err) {
-            winston.log("error", "Récupération du joueur par username "+ username);
+            winston.log("error", `Récupération du joueur par username ${username}`);
             throw err;
         }
         winston.log("info", "Récupération du joueur "+ username);

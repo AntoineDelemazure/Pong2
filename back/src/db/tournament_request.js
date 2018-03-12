@@ -8,14 +8,14 @@ const winston = require('winston')
  * Recherche un tournoi via son id
  * @param {number} id Le numéro du tournoi recherché
  */
-exports.getTournamentByID = function(id){
-    db.Connection.getInstance().query('SELECT * FROM p_tournaments WHERE tournoi_id = '+ id, function(err, rows, fields) {
+exports.getTournamentByID = function(id, callback){
+    db.Connection.getInstance().query(`SELECT * FROM p_tournaments WHERE tournament_id = ${id}`, function(err, rows, fields) {
         if (err) {
             winston.log("error", "Récupération du tournoi n°" + id);
             throw err;
         }
         winston.log("info", "Récupération du tournoi n°" + id);
-        return rows;
+        callback(rows);
       });
 }
 
@@ -37,3 +37,19 @@ exports.getAllTournaments = function(callback){
         }));
     });
 }
+
+exports.createTournament = function(tournament, callback){
+    db.Connection.getInstance().query(`INSERT INTO p_tournaments 
+        (tournament_date, tournament_finished, tournament_open, tournament_current_turn, tournament_referee_id)
+        VALUES ("${tournament.date}", "${tournament.finished}", "${tournament.open}", "${tournament.current_turn}", "${tournament.referee_id}")`,
+        function(err, rows, fields){
+            if(err){
+                winston.log('error', "Erreur lors de la création d'un nouveau tournoi")
+                throw err
+            }else{
+                winston.log("info", "Creation d'un tournoi");
+                callback(rows);
+            }
+    })
+}
+
