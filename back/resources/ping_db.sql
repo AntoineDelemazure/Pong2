@@ -20,6 +20,7 @@ CREATE TABLE p_players
 	player_username VARCHAR(100),
 	player_email VARCHAR(100),
 	player_password VARCHAR(100),
+	player_salt VARCHAR(100),
 	player_admin BOOLEAN NOT NULL,
 	PRIMARY KEY (player_id),
 	CONSTRAINT UC_Player UNIQUE (player_username,player_email)
