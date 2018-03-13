@@ -5,6 +5,7 @@
 require('colors'); //Couleurs dans la console
 require('dotenv').config(); //Chargement du fichier .env
 const winston = require('winston');
+const fs = require('fs');
 
 const express = require('express'); //Framework
 const bodyParser = require('body-parser'); //Pour parser le json automatiquement
@@ -15,8 +16,13 @@ const app = express(); //Initialisation de l'application
 const db = require("./db/db");
 const routes = require('./routes/routes');
 
-
-winston.add(winston.transports.File, { filename: '../logs/log.log' });
+// Création du fichier de logs et parametrage winston
+let logdir = './logs';
+let logfile = logdir + '/log.log';
+if (!fs.existsSync(logdir)){
+    fs.mkdirSync(logdir);
+}
+winston.add(winston.transports.File, { filename: logfile });
 
 // Autorisation des requêtes cross-origin
 app.use(cors());
