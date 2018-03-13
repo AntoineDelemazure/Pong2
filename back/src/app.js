@@ -4,6 +4,7 @@
 
 require('colors'); //Couleurs dans la console
 require('dotenv').config(); //Chargement du fichier .env
+const winston = require('winston');
 
 const express = require('express'); //Framework
 const bodyParser = require('body-parser'); //Pour parser le json automatiquement
@@ -23,10 +24,16 @@ app.set('port', port);
 
 // Chargement du bodyparser dans l'application
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Initialisation de la base de données
-db.init();
+db.init((error, result) => {
+    process.exit(0);
+});
+
+db.checkDBTables((error, result) => {
+    process.exit(0);
+});
 
 // Initialisation des routes du routeur
 let router = express.Router();
