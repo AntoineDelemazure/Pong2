@@ -40,15 +40,15 @@ exports.doRouting = function(router) {
     router.get('/tournaments', api.fetchTournaments);
     router.post('/tournaments', api.createNewTournament);
     router.put('/tournaments/:id/open', api.openTournament);
-    // router.put('/tournaments/:id/start', api.startTournament);
-    // router.put('/tournaments/:id/close', api.closeTournanment);
-    // router.put('/tournaments/:id/assign', api.assignJudgeToTournament);
-    // router.put('/tournaments/:id/finish', api.finishTournament);
-    // router.put('/tournaments/:id/nextround', api.nextRoundTournament);
-    // router.get('/tournaments/:id_t/matches', api.fetchTournamentMatches);
+    router.put('/tournaments/:id/start', api.startTournament);
+    router.put('/tournaments/:id/close', api.closeTournanment);
+    router.put('/tournaments/:id/finish', api.finishTournament);
+    router.put('/tournaments/:id/assign', api.assignJudgeToTournament);
+    router.put('/tournaments/:id/nextround', api.nextRoundTournament);
+    router.get('/tournaments/:id_t/matches', api.fetchTournamentMatches);
     // router.put('/tournaments/:id_t/matches/:id_m', api.fetchTournamentMatch);
-    // router.get('/tournaments/players', api.fetchPlayers);
-    // router.post('/tournaments/players', api.enrollNewPlayer);
-    // router.delete('/tournaments/players', api.excludePlayer);
+    // router.get('/tournaments/:id/players', api.fetchPlayers);
+    router.post('/tournaments/:id/players', api.enrollNewPlayer);
+    // router.delete('/tournaments/:id/players', api.excludePlayer);
     
 };
