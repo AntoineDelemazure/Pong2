@@ -21,6 +21,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { TournamentListComponent} from './tournament-list/tournament-list.component';
 import { TournamentCardComponent } from './shared/tournament-card/tournament-card.component';
 import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { TournamentDetailComponent } from './tournament-detail/tournament-detail
     TournamentListComponent,
     TournamentCardComponent,
     TournamentDetailComponent,
+    EditprofileComponent,
   ],
   providers: [
     AuthGuard,
