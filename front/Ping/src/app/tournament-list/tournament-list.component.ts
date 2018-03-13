@@ -18,6 +18,7 @@ export class TournamentListComponent implements OnInit {
   private currentUser: User;
 
   constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this._tournaments[0] = new Tournament();
     this._tournaments[0].name = "blablablabla";
     this._tournaments[0].date = "01/01/2018";

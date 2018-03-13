@@ -5,6 +5,7 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import {Tournament} from "../../_models/tournament";
+import {User} from "../../_models/user";
 
 @Component({
   selector: 'app-tournament-card',
@@ -13,10 +14,13 @@ import {Tournament} from "../../_models/tournament";
 })
 export class TournamentCardComponent implements OnInit {
 
-  //private tournament: any = {};
   @Input() tournament: any;
+  currentUser: User;
 
   constructor() {
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
   }
 
   ngOnInit() {

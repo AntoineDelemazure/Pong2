@@ -8,9 +8,16 @@
     <div class="panel-body">
       {{tournament.date}}<br/>
 
-      <span *ngIf="tournament.finished"> Terminé </span>
-      <span *ngIf="tournament.open && !tournament.finished"> Ouvert </span>
-      <span *ngIf="!tournament.finished && !tournament.open"> Fermé </span>
+      <div *ngIf="tournament.finished"> Terminé </div>
+
+      <ng-template [ngIf]="tournament.open && !tournament.finished">
+        <div> Ouvert </div>
+        <br/>
+        <div class="col-sm-6"> <a class="btn btn-primary">s'inscrire</a></div>
+        <div *ngIf="currentUser.isadmin" class="col-sm-6"><a class="btn btn-primary">fermer</a></div>
+      </ng-template>
+
+      <div *ngIf="!tournament.finished && !tournament.open"> Fermé </div>
     </div>
 
   </div>
