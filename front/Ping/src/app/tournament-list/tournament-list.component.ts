@@ -4,6 +4,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
+import {User} from "../_models/user";
+import {Input} from "@angular/compiler/src/core";
 
 @Component({
   selector: 'app-tournament-list',
@@ -13,8 +15,10 @@ import {Tournament} from "../_models/tournament";
 export class TournamentListComponent implements OnInit {
 
   private _tournaments: Tournament[] = new Array<Tournament>();
+  private currentUser: User;
 
   constructor() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this._tournaments[0] = new Tournament();
     this._tournaments[0].name = "blablablabla";
     this._tournaments[0].date = "01/01/2018";

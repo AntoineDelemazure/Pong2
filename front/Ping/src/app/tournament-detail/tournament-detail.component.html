@@ -2,35 +2,50 @@
   <div class="panel-body">
 
 
-    <main id="tournament">
-      <ng-container *ngFor="let round of tournament.rounds;">
-        <ul class="round" >
-          <li class="spacer">&nbsp;</li>
-          <ng-container *ngFor="let match of round.matches">
-
-            <ng-template [ngIf] = "match.score1 > match.score2">
-              <li class="game game-top winner">{{match.nom1}} <span>{{match.score1}}</span></li>
-              <li class="game game-spacer">&nbsp;</li>
-              <li class="game game-bottom ">{{match.nom2}} <span>{{match.score2}}</span></li>
-            </ng-template>
-
-            <ng-template [ngIf] = "match.score1 < match.score2">
-              <li class="game game-top">{{match.nom1}} <span>{{match.score1}}</span></li>
-              <li class="game game-spacer">&nbsp;</li>
-              <li class="game game-bottom winner">{{match.nom2}} <span>{{match.score2}}</span></li>
-            </ng-template>
-
-            <ng-template [ngIf] = "match.score1 == match.score2">
-              <li class="game game-top">{{match.nom1}} <span>{{match.score1}}</span></li>
-              <li class="game game-spacer">&nbsp;</li>
-              <li class="game game-bottom">{{match.nom2}} <span>{{match.score2}}</span></li>
-            </ng-template>
-            <li class="spacer">&nbsp;</li>
+      <ng-template [ngIf]="tournament.open == true">
+        <ul>
+          <ng-container *ngFor="let player of playerList">
+            <li>{{player}}</li>
           </ng-container>
-
         </ul>
-      </ng-container>
-    </main>
+      </ng-template>
+
+
+      <ng-template [ngIf]="tournament.open == false">
+        <main id="tournament">
+          <ng-container *ngFor="let round of tournament.rounds;">
+            <ul class="round">
+              <li class="spacer">&nbsp;</li>
+              <ng-container *ngFor="let match of round.matches">
+
+                <ng-template [ngIf] = "match.score1 > match.score2">
+                  <li class="game game-top winner">{{match.nom1}} <span>{{match.score1}}</span></li>
+                  <li class="game game-spacer">&nbsp;</li>
+                  <li class="game game-bottom ">{{match.nom2}} <span>{{match.score2}}</span></li>
+                </ng-template>
+
+                <ng-template [ngIf] = "match.score1 < match.score2">
+                  <li class="game game-top">{{match.nom1}} <span>{{match.score1}}</span></li>
+                  <li class="game game-spacer">&nbsp;</li>
+                  <li class="game game-bottom winner">{{match.nom2}} <span>{{match.score2}}</span></li>
+                </ng-template>
+
+                <ng-template [ngIf] = "match.score1 == match.score2">
+                  <li class="game game-top">{{match.nom1}} <span>{{match.score1}}</span></li>
+                  <li class="game game-spacer">&nbsp;</li>
+                  <li class="game game-bottom">{{match.nom2}} <span>{{match.score2}}</span></li>
+                </ng-template>
+                <li class="spacer">&nbsp;</li>
+              </ng-container>
+
+            </ul>
+          </ng-container>
+        </main>
+      </ng-template>
+
+
+
+
 
 
     <!--<main id="tournament">
