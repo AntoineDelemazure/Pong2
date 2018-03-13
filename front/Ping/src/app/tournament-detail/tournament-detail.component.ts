@@ -18,6 +18,7 @@ export class TournamentDetailComponent implements OnInit {
 
 
   private tournament: Tournament = new Tournament();
+  private playerList: String[] = new Array<String>();
 
 
   constructor() {
@@ -42,6 +43,20 @@ export class TournamentDetailComponent implements OnInit {
     this.tournament.rounds[2] = new Round();
     this.tournament.rounds[2].matches = new Array<Match>();
     this.tournament.rounds[2].matches[0] = new Match(4, 7, "muche", "JL", 0, 0);
+
+
+    for (let match of this.tournament.rounds[0].matches)
+    {
+      if (!this.playerList.includes(match.nom1))
+      {
+        this.playerList.push(match.nom1);
+      }
+
+      if (!this.playerList.includes(match.nom2))
+      {
+        this.playerList.push(match.nom2);
+      }
+    }
 
 
   }

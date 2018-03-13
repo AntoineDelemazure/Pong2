@@ -4,6 +4,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
+import {User} from "../_models/user";
+import {Input} from "@angular/compiler/src/core";
 
 @Component({
   selector: 'app-tournament-list',
@@ -13,6 +15,7 @@ import {Tournament} from "../_models/tournament";
 export class TournamentListComponent implements OnInit {
 
   private _tournaments: Tournament[] = new Array<Tournament>();
+  private currentUser: User;
 
   constructor() {
     this._tournaments[0] = new Tournament();
