@@ -2,7 +2,7 @@
   <div class="row">
 
     <app-tournament-card *ngFor="let tournament of _tournaments" [tournament] = "tournament"></app-tournament-card>
-    <div *ngIf="currentUser.isadmin"> <a class="btn btn-primary">créer un tournois</a></div>
+    <div *ngIf="currentUser.isadmin"> <a href="/tournament-register" class="btn btn-primary">créer un tournois</a></div>
   </div>
 </div>
 

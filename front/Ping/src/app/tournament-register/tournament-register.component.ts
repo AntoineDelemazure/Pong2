@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentRegisterComponent implements OnInit {
 
+
+  tournamentName:any;
+  tournamentDate:any;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  register() {
+
   }
 
 }
