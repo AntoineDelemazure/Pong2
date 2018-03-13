@@ -102,6 +102,7 @@ exports.authenticate = function(req, res) {
                     username: player[0].username,
                     rank: player[0].rank,
                     email: player[0].email,
+                    isadmin: player[0].admin,
 
                     token: token
                 };
