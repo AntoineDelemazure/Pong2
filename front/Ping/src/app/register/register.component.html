@@ -1,105 +1,120 @@
-﻿﻿<div class="container">
+﻿<div class="container">
   <div class="col-md-5">
     <div class="form-area">
       <div class="panel panel-default">
         <div class="panel-body">
-          <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+
+          <form  name="form"   (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+            <br style="clear:both">
+
             <h3 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h3>
             <div class="form-group">
-                <h2>Nom</h2>
-                <input type="text" class="form-control" id="lastname" minlength="4" maxlength="24"  [(ngModel)]="model.lastName" name="lastname" #lastname="ngModel" required>
-                <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)" class="alert alert-danger">
-                  <div [hidden]="!lastname.errors.required">
-                   Le nom est requis
-                  </div>
-                  <div [hidden]="!lastname.errors.minlength">
-                    le nom doit contenir au moins 4 caractères.
-                  </div>
-                  <div [hidden]="!lastname.errors.maxlength">
-                    le nom doit contenir maximum 24 caractères.
-                  </div>
+              <h2>Nom</h2>
+              <input type="text" class="form-control" id="lastname" minlength="2" maxlength="100" name="lastName" [(ngModel)]="model.lastname" #lastName="ngModel"  required/>
+              <div *ngIf="lastName.errors && (f.submitted || lastName.dirty || lastName.touched)" class="alert alert-danger">
+                <div [hidden]="!lastName.errors.required">
+                  Le nom est requis
                 </div>
-            </div>
-            <div class="form-group">
-                <h2>Prenom</h2>
-                <input type="text" class="form-control" id="firstName" minlength="4" maxlength="24"  [(ngModel)]="model.firstName" name="firstName" #firstName="ngModel" required>
-                <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-                  <div [hidden]="!firstName.errors.required">
-                    Le prenom est requis
-                  </div>
-                  <div [hidden]="!firstName.errors.minlength">
-                    le prenom doit contenir au moins 4 caractères.
-                  </div>
-                  <div [hidden]="!firstName.errors.maxlength">
-                    le prenom doit contenir maximum 24 caractères.
-                  </div>
+                <div [hidden]="!lastName.errors.minlength">
+                  le nom doit contenir au moins 2 caractères.
                 </div>
-            </div>
-            <div class="form-group">
-                <h2>Email</h2>
-                <input type="email" class="form-control" id="email" minlength="4" maxlength="24"  [(ngModel)]="model.email" name="email" #email="ngModel" required>
-                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
-                  <div [hidden]="!email.errors.required">
-                    L email est requis
-                  </div>
-                  <div [hidden]="!email.errors.minlength">
-                    l'email doit contenir au moins 4 caractères.
-                  </div>
-                  <div [hidden]="!email.errors.maxlength">
-                    l'email doit contenir maximum 24 caractères.
-                  </div>
+                <div [hidden]="!lastName.errors.maxlength">
+                  le nom doit contenir maximum 100 caractères.
                 </div>
-            </div>
-            <div class="form-group">
-                <h2>Rang</h2>
-                <input type="text" class="form-control" id="rang" maxlength="24"  [(ngModel)]="model.rang" name="rang" #rang="ngModel" required>
-                <div *ngIf="rang.errors && (rang.dirty || rang.touched)" class="alert alert-danger">
-                  <div [hidden]="!rang.errors.required">
-                    Le rang est requis
-                  </div>
-                  <div [hidden]="!rang.errors.maxlength">
-                    le rang doit contenir maximum 24 caractères.
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <h2>Identifiant</h2>
-                <input type="text" class="form-control" id="username" minlength="4" maxlength="24"  [(ngModel)]="model.username" name="username" #username="ngModel" required>
-                <div *ngIf="username.errors && (username.dirty || username.touched)" class="alert alert-danger">
-                  <div [hidden]="!username.errors.required">
-                    L' identifiant est requis
-                  </div>
-                  <div [hidden]="!username.errors.minlength">
-                    l' identifiant doit contenir au moins 4 caractères.
-                  </div>
-                  <div [hidden]="!username.errors.maxlength">
-                    l' identifiant doit contenir maximum 24 caractères.
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <h2>Mot de passe</h2>
-                <input type="password" class="form-control" id="password" minlength="6" maxlength="12"  [(ngModel)]="model.password" name="password" #password="ngModel" required>
-                <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
-                  <div [hidden]="!password.errors.required">
-                    Le mot de passe est requis
-                  </div>
-                  <div [hidden]="!password.errors.minlength">
-                    le motde passe doit contenir au moins 6 caractères.
-                  </div>
-                  <div [hidden]="!password.errors.maxlength">
-                    Name cannot be more than 12 characters long.
-                  </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <h2>Confirmation de Mot de passe</h2>
-                <input type="password" class="form-control" name="passwordconfirm" [(ngModel)]="this.passwordconfirm" required>
-              <label>{{message}}</label>
               </div>
+            </div>
+            <div class="form-group">
+
+              <h2>Prenom</h2>
+              <input type="text" class="form-control" id="firstName" minlength="2" maxlength="100" name="firstName" [(ngModel)]="model.firstname" #firstName="ngModel" required/>
+              <div *ngIf="firstName.errors && (f.submitted || firstName.dirty || firstName.touched)" class="alert alert-danger">
+                <div [hidden]="!firstName.errors.required">
+                  Le prenom est requis
+                </div>
+                <div [hidden]="!firstName.errors.minlength">
+                  le prenom doit contenir au moins 2 caractères.
+                </div>
+                <div [hidden]="!firstName.errors.maxlength">
+                  le prenom doit contenir maximum 100 caractères.
+                </div>
+              </div>
+
+            </div>
+            <div class="form-group">
+
+              <h2>Email</h2>
+              <input type="text" class="form-control" id="email" minlength="3" maxlength="100" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required>
+              <div *ngIf="email.errors && (f.submitted || email.dirty || email.touched)" class="alert alert-danger">
+                <div [hidden]="!email.errors.required">
+                  L'email est requis
+                </div>
+                <div [hidden]="!email.errors.minlength">
+                  l'email doit contenir au moins 3 caractères.
+                </div>
+                <div [hidden]="!email.errors.maxlength">
+                  l'email doit contenir maximum 100 caractères.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <h2>Rang</h2>
+              <input type="number" class="form-control" id="rank" maxlength="100" name="rank" [(ngModel)]="model.rank" #rank="ngModel" required>
+              <div *ngIf="rank.errors && (f.submitted || rank.dirty || rank.touched)" class="alert alert-danger">
+                <div [hidden]="!rank.errors.required">
+                  Le rang est requis
+                </div>
+                <div [hidden]="!rank.errors.maxlength">
+                  le rang doit contenir maximum 100 caractères.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <h2>Identifiant</h2>
+              <input type="text" class="form-control" name="username" minlength="2" maxlength="100" placeholder="Identifiant " [(ngModel)]="model.username" #username="ngModel" required/>
+              <div *ngIf="username.errors && (f.submitted || username.dirty || username.touched)" class="alert alert-danger">
+                <div [hidden]="!username.errors.required">
+                  L'identifiant  est requis
+                </div>
+                <div [hidden]="!username.errors.minlength">
+                  l'identifiant doit contenir au moins 2 caractères.
+                </div>
+                <div [hidden]="!username.errors.maxlength">
+                  l'identifiant doit contenir maximum 100 caractères.
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+
+              <h2>Mot de Passe</h2>
+              <input type="password" class="form-control" name="password" minlength="6" maxlength="100" placeholder="Mot de Passe (minimum 6 caractères) " [(ngModel)]="model.password" #password="ngModel" required/>
+              <div *ngIf="password.errors && (f.submitted || password.dirty || password.touched)" class="alert alert-danger">
+                <div [hidden]="!password.errors.required">
+                  Le mot de passe est requis
+                </div>
+                <div [hidden]="!password.errors.minlength">
+                  le mot de passe doit contenir au moins 6 caractères.
+                </div>
+                <div [hidden]="!password.errors.maxlength">
+                  l doit contenir maximum 100 caractères.
+                </div>
+              </div>
+            </div>
+            <div class="form-group" >
+
+              <h2>Confirmation de Mot de Passe</h2>
+              <input type="password" class="form-control" id="pass2" name="subject" [(ngModel)]="passwordconfirm" placeholder="Confirmation Mot de Passe " required>
+              <div *ngIf="f.submitted && !username.valid" class="alert alert-danger">La confirmation du mot de passe est requis
+              </div>
+            </div>
+
+            <label> {{message}} </label>
+
             <div class="form-group">
               <button [disabled]="loading" class="btn btn-primary">Valider</button>
-              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+              <img *ngIf="loading"
+                   src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
               <a [routerLink]="['/login']" class="btn btn-link">Annuler</a>
             </div>
           </form>
