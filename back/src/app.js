@@ -15,6 +15,9 @@ const app = express(); //Initialisation de l'application
 const db = require("./db/db");
 const routes = require('./routes/routes');
 
+
+winston.add(winston.transports.File, { filename: '../logs/log.log' });
+
 // Autorisation des requêtes cross-origin
 app.use(cors());
 
