@@ -3,14 +3,12 @@
     <div class="form-area">
       <div class="panel panel-default">
         <div class="panel-body">
-
           <form  name="form"   (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
             <br style="clear:both">
-
             <h3 style="margin-bottom: 25px; text-align: center;">Formulaire d'inscription </h3>
             <div class="form-group">
               <h2>Nom</h2>
-              <input type="text" class="form-control" id="lastname" minlength="2" maxlength="100" name="lastName" [(ngModel)]="model.lastname" #lastName="ngModel"  required/>
+              <input type="text" class="form-control" id="lastname" minlength="2" maxlength="100" name="lastName" [(ngModel)]="model.lastname" #lastName="ngModel"  required  pattern="[a-zA-Z\- ]{2,}"/>
               <div *ngIf="lastName.errors && (f.submitted || lastName.dirty || lastName.touched)" class="alert alert-danger">
                 <div [hidden]="!lastName.errors.required">
                   Le nom est requis
@@ -21,12 +19,14 @@
                 <div [hidden]="!lastName.errors.maxlength">
                   le nom doit contenir maximum 100 caractères.
                 </div>
+                <div [hidden]="!lastName.errors.pattern">
+                  le nom n'est pas valide.
+                </div>
               </div>
             </div>
             <div class="form-group">
-
               <h2>Prenom</h2>
-              <input type="text" class="form-control" id="firstName" minlength="2" maxlength="100" name="firstName" [(ngModel)]="model.firstname" #firstName="ngModel" required/>
+              <input type="text" class="form-control" id="firstName" minlength="2" maxlength="100" name="firstName" [(ngModel)]="model.firstname" #firstName="ngModel" required pattern="[a-zA-Z\- ]{2,}"/>
               <div *ngIf="firstName.errors && (f.submitted || firstName.dirty || firstName.touched)" class="alert alert-danger">
                 <div [hidden]="!firstName.errors.required">
                   Le prenom est requis
@@ -37,13 +37,14 @@
                 <div [hidden]="!firstName.errors.maxlength">
                   le prenom doit contenir maximum 100 caractères.
                 </div>
+                <div [hidden]="!firstName.errors.pattern">
+                  le prenom n'est pas valide.
+                </div>
               </div>
-
             </div>
             <div class="form-group">
-
               <h2>Email</h2>
-              <input type="text" class="form-control" id="email" minlength="3" maxlength="100" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required>
+              <input type="text" class="form-control" id="email" minlength="3" maxlength="100" name="email" placeholder="adresse@email.com" [(ngModel)]="model.email" #email="ngModel" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
               <div *ngIf="email.errors && (f.submitted || email.dirty || email.touched)" class="alert alert-danger">
                 <div [hidden]="!email.errors.required">
                   L'email est requis
@@ -54,12 +55,14 @@
                 <div [hidden]="!email.errors.maxlength">
                   l'email doit contenir maximum 100 caractères.
                 </div>
+                <div [hidden]="!email.errors.pattern">
+                  l'email n'est pas valide.
+                </div>
               </div>
             </div>
             <div class="form-group">
-
               <h2>Rang</h2>
-              <input type="number" class="form-control" id="rank" maxlength="100" name="rank" [(ngModel)]="model.rank" #rank="ngModel" required>
+              <input type="text" class="form-control" id="rank" maxlength="100" name="rank" [(ngModel)]="model.rank" #rank="ngModel" required  pattern="[0-9]*">
               <div *ngIf="rank.errors && (f.submitted || rank.dirty || rank.touched)" class="alert alert-danger">
                 <div [hidden]="!rank.errors.required">
                   Le rang est requis
@@ -67,10 +70,12 @@
                 <div [hidden]="!rank.errors.maxlength">
                   le rang doit contenir maximum 100 caractères.
                 </div>
+                <div [hidden]="!rank.errors.pattern">
+                  le rang doit etre un nombre.
+                </div>
               </div>
             </div>
             <div class="form-group">
-
               <h2>Identifiant</h2>
               <input type="text" class="form-control" name="username" minlength="2" maxlength="100" placeholder="Identifiant " [(ngModel)]="model.username" #username="ngModel" required/>
               <div *ngIf="username.errors && (f.submitted || username.dirty || username.touched)" class="alert alert-danger">
@@ -86,7 +91,6 @@
               </div>
             </div>
             <div class="form-group">
-
               <h2>Mot de Passe</h2>
               <input type="password" class="form-control" name="password" minlength="6" maxlength="100" placeholder="Mot de Passe (minimum 6 caractères) " [(ngModel)]="model.password" #password="ngModel" required/>
               <div *ngIf="password.errors && (f.submitted || password.dirty || password.touched)" class="alert alert-danger">
@@ -102,15 +106,12 @@
               </div>
             </div>
             <div class="form-group" >
-
               <h2>Confirmation de Mot de Passe</h2>
               <input type="password" class="form-control" id="pass2" name="subject" [(ngModel)]="passwordconfirm" placeholder="Confirmation Mot de Passe " required>
               <div *ngIf="f.submitted && !username.valid" class="alert alert-danger">La confirmation du mot de passe est requis
               </div>
             </div>
-
             <label> {{message}} </label>
-
             <div class="form-group">
               <button [disabled]="loading" class="btn btn-primary">Valider</button>
               <img *ngIf="loading"
