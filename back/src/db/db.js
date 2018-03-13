@@ -45,6 +45,10 @@ exports.init = function(callback){
             if (err) {
                 winston.log('error', 'La connexion à la db a échoué');
                 callback(err);
+            } else {
+
+                winston.log('info', 'Connexion db initialisée');
+                callback(null);
             }
         });
 };
@@ -78,6 +82,7 @@ create = function(callback){
             callback(err);
         } else {
             winston.log('info', 'Tables créées');
+            callback(null);
         }
     })
 

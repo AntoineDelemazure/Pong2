@@ -28,11 +28,16 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Initialisation de la base de données
 db.init((error, result) => {
-    process.exit(0);
-});
+    if (error) {
+        process.exit(0);
+    }
 
-db.checkDBTables((error, result) => {
-    process.exit(0);
+    db.checkDBTables((error, result) => {
+        if (error) {
+            process.exit(0);
+        }
+    });
+
 });
 
 // Initialisation des routes du routeur
