@@ -9,27 +9,27 @@
             <div class="form-group">
               <h2>Nom du tournois</h2>
               <input type="text" class="form-control" id="tournamentName" name="tournamentName" [(ngModel)]="tournamentName"   required  pattern="[a-zA-Z\- ]{2,}"/>
-              <div *ngIf="tournamentName.errors && (f.submitted || tournament_Name.dirty || tournamentName.touched)" class="alert alert-danger">
-                <div [hidden]="!tournamentName.errors.required">
-                  Le nom est requis
-                </div>
-                <div [hidden]="tournamentName.errors.minlength">
-                  le nom doit contenir au moins 2 caractères.
-                </div>
-                <div [hidden]="!tournamentName.errors.maxlength">
-                  le nom doit contenir maximum 100 caractères.
-                </div>
-                <div [hidden]="!tournamentName.errors.pattern">
-                  le nom n'est pas valide.
-                </div>
-              </div>
+              <!--<div *ngIf="tournamentName.errors && (f.submitted || tournament_Name.dirty || tournamentName.touched)" class="alert alert-danger">-->
+                <!--&lt;!&ndash;<div [hidden]="!tournamentName.errors.required">&ndash;&gt;-->
+                  <!--&lt;!&ndash;Le nom est requis&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div [hidden]="tournamentName.errors.minlength">&ndash;&gt;-->
+                  <!--&lt;!&ndash;le nom doit contenir au moins 2 caractères.&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div [hidden]="!tournamentName.errors.maxlength">&ndash;&gt;-->
+                  <!--&lt;!&ndash;le nom doit contenir maximum 100 caractères.&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div [hidden]="!tournamentName.errors.pattern">&ndash;&gt;-->
+                  <!--&lt;!&ndash;le nom n'est pas valide.&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+              <!--</div>-->
             </div>
             <div class="form-group">
               <h2>Date</h2>
               <input type="date" class="form-control" id="tournamentdDate" name="tournamentDate" [(ngModel)]="tournamentDate" required pattern="[a-zA-Z\- ]{2,}"/>
 
             </div>
-            
+
             <div class="form-group">
               <button [disabled]="loading" class="btn btn-primary">Valider</button>
               <img *ngIf="loading"
