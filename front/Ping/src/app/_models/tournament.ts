@@ -9,5 +9,6 @@ export class Tournament {
   open: boolean;
   currentRound: number;
   rounds : Round[];
+  referee_id:number;
 
 }
