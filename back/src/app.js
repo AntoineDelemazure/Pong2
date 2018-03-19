@@ -22,7 +22,7 @@ let logfile = logdir + '/log.log';
 if (!fs.existsSync(logdir)){
     fs.mkdirSync(logdir);
 }
-winston.add(winston.transports.File, { filename: logfile });
+winston.add(winston.transports.File, { filename: logfile, maxsize: 1024, maxFiles: 20});
 
 // Autorisation des requêtes cross-origin
 app.use(cors());
