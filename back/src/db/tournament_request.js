@@ -133,8 +133,8 @@ exports.fetchTournamentMatches = function (id, callback) {
         AND pl1.plays_match_id = pl2.plays_match_id
         AND pl1.plays_match_id = m.match_id
         AND m.match_tournament_id = 5
-        GROUP BY m.match_id
-    `, function (err, rows, fields) {
+        GROUP BY m.match_id`,
+         function (err, rows, fields) {
             if (err) {
                 winston.log('error', `Erreur lors du listing des matchs du tournoi n°${id}`)
                 callback(err, null)
@@ -154,7 +154,25 @@ exports.fetchTournamentMatches = function (id, callback) {
 
 exports.enrollNewPlayer = function(id, joueur_id, callback){
     db.Connection.getInstance().query(
-        `INSERT INTO p_participates VALUES ("${id}", "${joueur_id}")`, function(err, rows, fields){
+        `INSERT INTO p_participates
+         VALUES ("${id}", "${joueur_id}")`,
+          function(err, rows, fields){
+        if(err){
+            winston.log('error', `Erreur lors de l'ajout d'un joueur à un tournoi ${id}`)
+            callback(err, null)
+        }else{
+            winston.log("info", `Ajout d'un joueur au tournoi n°${id}`);
+            callback(null, rows);
+        }
+    })
+}
+
+exports.enrollNewPlayer = function(id, joueur_id, callback){
+    db.Connection.getInstance().query(
+        `DELETE FROM p_participates
+         WHERE participates_player_id = "${id}"
+         AND participates_tournament_id = "${joueur_id}"`,
+          function(err, rows, fields){
         if(err){
             winston.log('error', `Erreur lors de l'ajout d'un joueur à un tournoi ${id}`)
             callback(err, null)

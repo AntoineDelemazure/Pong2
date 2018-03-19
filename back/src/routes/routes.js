@@ -49,6 +49,6 @@ exports.doRouting = function(router) {
     // router.put('/tournaments/:id_t/matches/:id_m', api.fetchTournamentMatch);
     // router.get('/tournaments/:id/players', api.fetchPlayers);
     router.post('/tournaments/:id/players', api.enrollNewPlayer);
-    // router.delete('/tournaments/:id/players', api.excludePlayer);
+    router.delete('/tournaments/:id/players', api.excludePlayer);
     
 };

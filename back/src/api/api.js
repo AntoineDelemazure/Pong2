@@ -252,9 +252,26 @@ exports.enrollNewPlayer = function(req, res){
     try{
         id = req.params.id
         id_joueur = req.body.player_id
-        tournaments_r.enrollNewPlayer(id, id_joueur, function(err, tournament){
-            if(err == null)
+        tournaments_r.enrollNewPlayer(id, id_joueur, function(err, insert_result){
+            if(err == null){
+                winston.log("info", `retour de l'insert : ${insert_result}`)
                 return res.status(200).json({"info": `Le tournoi ${id} a un nouveau joueur !`});
+            } else
+                winston.log('error', err) 
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+
+exports.excludePlayer = function(req, res){
+    winston.log('info', "DELETE on /tournament/id/players")
+    try{
+        id = req.params.id
+        id_joueur = req.body.player_id
+        tournaments_r.excludePlayer(id, id_joueur, function(err, tournament){
+            if(err == null)
+                return res.status(200).json({"info": `Le tournoi ${id} a un joueur de moins !`});
             else
                 winston.log('error', err) 
         })
