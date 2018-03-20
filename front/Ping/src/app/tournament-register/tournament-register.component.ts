@@ -52,7 +52,5 @@ export class TournamentRegisterComponent implements OnInit {
             console.log(error);
             this.alertService.error(error);
           });
-
   }
-
 }

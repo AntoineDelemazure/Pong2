@@ -19,7 +19,7 @@ export class AppComponent {
 
   constructor(private userService: UserService,
               private authentificationService: AuthenticationService,
-              private router:Router
+              private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
