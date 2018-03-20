@@ -16,7 +16,6 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "exec-sql": "^2.0.2",
-    "execsql": "0.0.3",
     "express": "^4.16.2",
     "jsdoc": "^3.5.5",
     "jsonwebtoken": "^8.1.1",

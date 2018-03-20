@@ -39,20 +39,27 @@ exports.Connection = Connection;
  * Se connecte à la bdd et créé les tables si nécessaire
  * @throws {ECONNREFUSED} Connexion à la base de données impossible
  */
-exports.init = function(){
+exports.init = function(callback){
     Connection.getInstance().connect(
-        function(err) {
-            if (err){
-                winston.log('error', 'La connexion a échoué');
-                throw err;
+        function (err) {
+            if (err) {
+                winston.log('error', 'La connexion à la db a échoué');
+                callback(err);
+            } else {
+
+                winston.log('info', 'Connexion db initialisée');
+                callback(null);
             }
         });
+};
 
+//TODO comments
+exports.checkDBTables = function(callback) {
     Connection.getInstance().query("SELECT * FROM p_players;",
         function(err) {
             if(err){
                 winston.log('info', 'Table p_players inaccessible, création de la bdd');
-                create();
+                create(callback);
             }
         });
 };
@@ -61,19 +68,22 @@ exports.init = function(){
  * Execute le fichier de création des tables
  * @throws Le fichier de création sql est illisible
  */
-create = function(){
+create = function(callback){
+
     execsql.connect({
-        'database' : 'ping_db',
-        'user' : 'root',
-        'password' : ''
+        'database': 'ping_db',
+        'user': 'root',
+        'password': ''
     });
 
     execsql.executeFile(directory_name, function(err) {
         if (err) {
-            winston.log('error', 'Fichier sql non exécutable');
-            throw err;
+            winston.log('error', 'Erreur exécution fichier sql');
+            callback(err);
+        } else {
+            winston.log('info', 'Tables créées');
+            callback(null);
         }
-        winston.log('info', 'Tables créées');
     })
 
 };

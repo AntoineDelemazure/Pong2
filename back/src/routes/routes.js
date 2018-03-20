@@ -23,13 +23,13 @@ exports.doRouting = function(router) {
     router.use(function(req, res, next){
         const token = req.body.token || req.headers['token']
         if(token){
-            jwt.verify(token, process.env.SECRET,function(err, decoded) {      
+            jwt.verify(token, process.env.SECRET,function(err, decoded) {
                 if (err) {
                     return res.status(403).json({error: 'Failed to authenticate token.'});
                 } else {
                     // if everything is good, save to request for use in other routes
                     req.decoded = decoded;
-                    console.log(decoded)  
+                    console.log(decoded)
                     next();
                 }});
         }else{
