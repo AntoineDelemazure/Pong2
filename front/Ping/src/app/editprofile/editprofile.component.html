@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-md-5">
+    <div class="form-area">
+      <div class="panel panel-default">
+        <div class="panel-body">
+            <br style="clear:both">
+            <h3 style="margin-bottom: 25px; text-align: center;">Modification de profil </h3>
+            <div class="form-group">
+              <h2>Nom</h2>
+              <input type="text" id="lastname" [value]="currentUser.lastname">
+              </div>
+          <div class="form-group">
+            <h2>Prénom</h2>
+            <input type="text" id="firstname" [value]="currentUser.firstname">
+          </div>
+            <div class="form-group">
+            <h2>Identifiant</h2>
+              <input type="text" id="identifiant" [value]="currentUser.username">
+          </div>
+            <div class="form-group">
+              <h2>Email</h2>
+              <input type="text" id="email" [value]="currentUser.email">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary">Modifier</button>
+              <button [routerLink]="['/profil']" class="btn btn-link">Annuler</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
