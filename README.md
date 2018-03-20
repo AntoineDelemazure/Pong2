@@ -17,3 +17,9 @@
  - Les logs de l'appli sont sauvegardés dans le dossier "logs", créé automatiquement lors du lancement du serveur.
  
  ## Front-end
+
+- Clonez le repository (si vous ne l'avez pas déjà fait pour le Back-end)
+
+- Placez-vous dans le dossier "front/Ping" et lancez la commande "npm install" pour télécharger les modules npm nécéssaires au projet.
+
+- Lancez d'abord le Back-end (en suivant les instructions ci-dessus) puis, toujours dans le dossier "front/Ping", lancez la commande "npm start"
