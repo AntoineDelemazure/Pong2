@@ -1,5 +1,7 @@
 /**
- * Composant qui gère la barre de navigation ainsi que le "router-outlet" qui affiche les différents composants lors de la navigation sur le site
+ * Composant qui gère la barre de navigation ainsi que le "router-outlet"
+ * qui affiche les différents composants lors de la navigation sur le site
+ *
  */
 
 import { Component } from '@angular/core';
@@ -20,7 +22,7 @@ export class AppComponent {
 
   constructor(private userService: UserService,
               private authentificationService: AuthenticationService,
-              private router:Router
+              private router: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }

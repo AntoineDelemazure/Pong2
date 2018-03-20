@@ -14,7 +14,7 @@
         <div> Ouvert </div>
         <br/>
         <div class="col-sm-6"> <a class="btn btn-primary">s'inscrire</a></div>
-        <div *ngIf="currentUser.isadmin" class="col-sm-6"><a class="btn btn-primary">fermer</a></div>
+        <div *ngIf="currentUser.isadmin==true" class="col-sm-6"><a class="btn btn-primary">fermer</a></div>
       </ng-template>
 
       <div *ngIf="!tournament.finished && !tournament.open"> Fermé </div>

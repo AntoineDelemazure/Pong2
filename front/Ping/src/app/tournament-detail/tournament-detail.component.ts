@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
 import {Round} from "../_models/round";
 import {Match} from "../_models/match";
+import {TournamentDetailService} from "../_services/tournamentDetail.service";
+import {UserService} from "../_services/user.service";
+import {User} from "../_models/user";
 
 @Component({
   selector: 'app-tournament-detail',
@@ -17,14 +20,21 @@ import {Match} from "../_models/match";
 export class TournamentDetailComponent implements OnInit {
 
 
-  private tournament: Tournament = new Tournament();
+  private tournament: any;
   private playerList: String[] = new Array<String>();
+  private currentUser: User;
 
+  constructor(private userService: UserService) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
   /**
-   * constructeur par défaut, qui créer un tournois factice en attendant qu'on puisse faire le lien avec le Back-end
+   * constructeur par défaut, qui créer un tournoi factice en attendant qu'on puisse faire le lien avec le Back-end
    */
-  constructor() {
+  ngOnInit() {
 
+    //this.tournament = this.userService.getTournamentById(1, this.currentUser.token).subscribe(tournament => {this.tournament = tournament;});
+
+    this.tournament = new Tournament();
     this.tournament.name = "blablabla";
     this.tournament.currentRound = 1;
     this.tournament.open = false;
@@ -47,7 +57,7 @@ export class TournamentDetailComponent implements OnInit {
     this.tournament.rounds[2].matches[0] = new Match(4, 7, "muche", "JL", 0, 0);
 
 
-    for (let match of this.tournament.rounds[0].matches)
+    for (const match of this.tournament.rounds[0].matches)
     {
       if (!this.playerList.includes(match.nom1))
       {
@@ -61,9 +71,6 @@ export class TournamentDetailComponent implements OnInit {
     }
 
 
-  }
-
-  ngOnInit() {
   }
 
 }

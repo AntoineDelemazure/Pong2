@@ -1,4 +1,6 @@
 /**
+ *
+ *
  * Composant qui permet d'enregistrer un tournois dans la base de données
  * TODO : faire le lien avec le Back-end une fois celui-ci prêt.
  */
@@ -55,7 +57,5 @@ export class TournamentRegisterComponent implements OnInit {
             console.log(error);
             this.alertService.error(error);
           });
-
   }
-
 }
