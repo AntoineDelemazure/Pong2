@@ -1,6 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Tournament} from "../../_models/tournament";
-
 import {User} from "../../_models/user";
 
 /**
@@ -12,7 +11,7 @@ import {User} from "../../_models/user";
   templateUrl: './tournament-card.component.html',
   styleUrls: ['./tournament-card.component.css']
 })
-export class TournamentCardComponent implements OnInit, OnDestroy {
+export class TournamentCardComponent implements OnInit {
 
   @Input() tournament: any;
   currentUser: User;
@@ -38,8 +37,3 @@ export class TournamentCardComponent implements OnInit, OnDestroy {
     this.dateFormate = this.tournament.date;
     this.dateFormate = this.dateFormate.substring(0, 10);
   }
-
-  ngOnDestroy() {
-  }
-
-}

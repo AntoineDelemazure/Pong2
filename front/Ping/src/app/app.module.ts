@@ -50,7 +50,6 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
     AuthGuard,
     AlertService,
     AuthenticationService,
-
     UserService,
     {
       provide: HTTP_INTERCEPTORS,
