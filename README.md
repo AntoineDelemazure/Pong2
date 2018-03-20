@@ -25,3 +25,6 @@ Vous aurez besoin avant tout d'installer NodeJS : https://nodejs.org/en/, qui pe
 - Placez-vous dans le dossier "front/Ping" et lancez la commande "npm install" pour télécharger les modules npm nécessaires au projet.
 
 - Lancez d'abord le Back-end (en suivant les instructions ci-dessus) puis, toujours dans le dossier "front/Ping", lancez la commande "npm start"
+
+
+- Pour générer la documentation, lancez la commande "compodoc -p ./tsconfig.json" (toujours dans le dossier "front/Ping") puis lancez la commande "compodoc src -s" pour lancer Compodoc. Vous pouvez à présent consulter la doc dans un navigateur à l'adresse http://127.0.0.1:8080/
