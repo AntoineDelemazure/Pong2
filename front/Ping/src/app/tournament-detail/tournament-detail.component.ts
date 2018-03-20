@@ -20,7 +20,9 @@ export class TournamentDetailComponent implements OnInit {
   private tournament: Tournament = new Tournament();
   private playerList: String[] = new Array<String>();
 
-
+  /**
+   * constructeur par défaut, qui créer un tournois factice en attendant qu'on puisse faire le lien avec le Back-end
+   */
   constructor() {
 
     this.tournament.name = "blablabla";

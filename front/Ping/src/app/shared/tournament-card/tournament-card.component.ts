@@ -17,6 +17,9 @@ export class TournamentCardComponent implements OnInit {
   @Input() tournament: any;
   currentUser: User;
 
+  /**
+   * constructeur par défaut qui permet de récupérer l'utilisateur courant.
+   */
   constructor() {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

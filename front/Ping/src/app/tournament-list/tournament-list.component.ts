@@ -17,6 +17,9 @@ export class TournamentListComponent implements OnInit {
   private _tournaments: Tournament[] = new Array<Tournament>();
   private currentUser: User;
 
+  /**
+   * constructeur par défaut, qui créer des tournois factice pour tester, en attendant le lien avec le Back-end.
+   */
   constructor() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this._tournaments[0] = new Tournament();

@@ -33,7 +33,7 @@ export class RegisterComponent implements  OnInit{
         private alertService: AlertService) { }
 
 
-  ngOnInit():void {
+  ngOnInit() {
 
 
   }
@@ -43,13 +43,13 @@ export class RegisterComponent implements  OnInit{
    */
     register() {
 
-     var isValid=true;
+     let isValid = true;
 
-      if(!(this.model.password === this.passwordconfirm)){
+      if (!(this.model.password === this.passwordconfirm)){
         console.log(this.model.password);
         console.log(this.passwordconfirm);
-        this.message="La confirmation de mot de passe ne correspondent pas";
-        isValid=false;
+        this.message = 'La confirmation de mot de passe ne correspondent pas';
+        isValid = false;
       }
 
 
