@@ -39,7 +39,7 @@ exports.doRouting = function(router) {
 
     router.get('/tournaments', api.fetchTournaments);
     router.post('/tournaments', api.createNewTournament);
-    router.put('/tournaments/:id/open', api.openTournament);
+    //router.put('/tournaments/:id/open', api.openTournament); // fonctionelle mais inutile
     router.put('/tournaments/:id/start', api.startTournament);
     router.put('/tournaments/:id/close', api.closeTournanment);
     router.put('/tournaments/:id/finish', api.finishTournament);

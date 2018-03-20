@@ -35,6 +35,7 @@ exports.getAllTournaments = function(callback){
         winston.log('info', 'Récupération de tout les tournois');
         callback(rows.map(function(elem){
             return {
+                 id: elem.tournament_id,
                  date: elem.tournament_date,
                  finished: elem.tournament_finished,
                  open: elem.tournament_open,
@@ -96,7 +97,8 @@ exports.assignJudgeToTournament = function(id, referee_id, callback){
     db.Connection.getInstance().query(
         `UPDATE p_tournaments
         SET tournament_referee_id = "${referee_id}"
-        WHERE tournament_id = "${id}"`, function(err, rows, fields){
+        WHERE tournament_id = "${id}"`,
+        function(err, rows, fields){
         if(err){
             winston.log('error', `Erreur lors de l'assignation d'un arbitre (le joueur n°${referee_id}) au tournoi ${id}`)
             callback(err, null)
@@ -132,7 +134,7 @@ exports.fetchTournamentMatches = function (id, callback) {
         AND p1.player_id <> p2.player_id
         AND pl1.plays_match_id = pl2.plays_match_id
         AND pl1.plays_match_id = m.match_id
-        AND m.match_tournament_id = 5
+        AND m.match_tournament_id = ${id}
         GROUP BY m.match_id`,
          function (err, rows, fields) {
             if (err) {

@@ -207,7 +207,7 @@ exports.assignJudgeToTournament = function(req, res){
         id = req.params.id
         referee = req.body.referee_id
         tournaments_r.assignJudgeToTournament(id, referee, function(tournament){
-            return res.status(200).json({"info": `Le tournoi ${id} est terminé !`});
+            return res.status(200).json({"info": `Le joueur ${referee} est désormais l'arbitre pour le tournoi n°${id} !`});
         })
     }catch(err){
         console.log(err)
