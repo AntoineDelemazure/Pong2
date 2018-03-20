@@ -1,5 +1,10 @@
 /**
  * @file Fichier contenant les différentes fonctions appelées par les routes.
+ * 
+ * Si il existe encore des try/catch au moment ou vous lisez ces lignes,
+ * n'hésitez pas à prendre le temps de les enlever, ils ne servent à rien.
+ * Vous pourrez trouver des exemples de bonnes pratiques dans les fonctions qui n'en contiennent pas
+ * (avec des callbacks)
  */
 
 const player_r = require('../db/player_request');

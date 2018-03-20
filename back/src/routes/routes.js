@@ -46,9 +46,10 @@ exports.doRouting = function(router) {
     router.put('/tournaments/:id/assign', api.assignJudgeToTournament);
     router.put('/tournaments/:id/nextround', api.nextRoundTournament);
     router.get('/tournaments/:id_t/matches', api.fetchTournamentMatches);
+    // Les routes ci-dessous ne sont pas fonctionnelles (voir rapport, partie technique)
     // router.put('/tournaments/:id_t/matches/:id_m', api.fetchTournamentMatch);
     // router.get('/tournaments/:id/players', api.fetchPlayers);
-    router.post('/tournaments/:id/players', api.enrollNewPlayer);
+    router.post('/tournaments/:id/players', api.enrollNewPlayer); 
     router.delete('/tournaments/:id/players', api.excludePlayer);
     
 };
