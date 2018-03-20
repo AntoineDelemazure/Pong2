@@ -8,5 +8,6 @@
     email: string;
     rang: number;
     isadmin: boolean;
+    token: string;
 
 }

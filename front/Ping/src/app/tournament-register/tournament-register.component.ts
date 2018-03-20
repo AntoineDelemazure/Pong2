@@ -5,6 +5,11 @@
 
 
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../_services/user.service";
+import {AlertService} from "../_services/alert.service";
+import {Router} from "@angular/router";
+import {current} from "codelyzer/util/syntaxKind";
+import {User} from "../_models/user";
 
 @Component({
   selector: 'app-tournament-register',
@@ -13,15 +18,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentRegisterComponent implements OnInit {
 
+  /*
+  * Composant utiliser pour créer un tournois
+  * */
 
-  tournamentName:any;
-  tournamentDate:any;
-  constructor() { }
+  currentUser: User;
+  model: any = {};
+
+  constructor(
+    private userService: UserService,
+    private alertService: AlertService,
+    private router: Router
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
   }
 
   register() {
+    this.model.id = 0;
+    this.model.finished = false;
+    this.model.open = true;
+    this.model.currentRound = 0;
+    this.model.referee_id = this.currentUser.id;
+
+
+
+      this.userService.createTournament(this.model, this.currentUser.token)
+        .subscribe(
+          data => {
+            this.alertService.success('Registration successful', true);
+            this.router.navigate(['/login']);
+          },
+          error => {
+            console.log(error);
+            this.alertService.error(error);
+          });
 
   }
 

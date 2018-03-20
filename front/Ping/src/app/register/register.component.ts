@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 import { AlertService, UserService } from '../_services/index';
 import {FormControl, FormGroup} from "@angular/forms";
 
-
-
 @Component({
     moduleId: module.id,
     templateUrl: 'register.component.html'
