@@ -9,6 +9,7 @@ import {ProfilComponent} from "./profil/profil.component";
 import {TournamentListComponent} from "./tournament-list/tournament-list.component";
 import {TournamentDetailComponent} from "./tournament-detail/tournament-detail.component";
 import {TournamentRegisterComponent} from "./tournament-register/tournament-register.component";
+import {EditprofileComponent} from "./editprofile/editprofile.component";
 
 
 const appRoutes: Routes = [
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profil', component: ProfilComponent},
   { path: 'tournament', component: TournamentDetailComponent},
-
+  { path: 'editprofile', component: EditprofileComponent},
   { path: 'tournament-register', component: TournamentRegisterComponent},
 
   // otherwise redirect to home

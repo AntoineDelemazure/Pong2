@@ -5,11 +5,17 @@ import {UserService} from "../_services/user.service";
 import {AlertService} from "../_services/alert.service";
 import {AuthenticationService} from "../_services/authentication.service";
 import {User} from "../_models/user";
+/**
+* Modification des informations de l'utilisateur courant (nom, prenom, email et nom d'utilisateur)
+*/
+
 @Component({
   selector: 'app-editprofile',
   templateUrl: './editprofile.component.html',
   styleUrls: ['./editprofile.component.css']
 })
+
+
 export class EditprofileComponent implements OnInit {
   currentUser: User;
   users: User[] = [];

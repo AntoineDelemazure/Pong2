@@ -8,14 +8,16 @@ import { Router } from '@angular/router';
 
 import { AlertService, UserService } from '../_services/index';
 import {FormControl, FormGroup} from "@angular/forms";
-
+/**
+ * création d'un nouvel utilisateur avec un formulaire d'inscription(nom, prenom, email, rang, nom d'utilisateur et mot de passe, confirmation du mot de passe) avec des tests de validation à l'aide des pattern
+ *
+ * La classe UserService permet de créer un utilisateur en appelant la fonction create qui prend comme paramètres un utilisateur.
+ */
 @Component({
     moduleId: module.id,
     templateUrl: 'register.component.html'
 })
-/**
- * Composant utilisé pour enregistrer un nouvelle utilisateur
- */
+
 export class RegisterComponent implements  OnInit{
     model: any = {};
 
@@ -35,10 +37,6 @@ export class RegisterComponent implements  OnInit{
 
 
   }
-
-  /**
-   * la classe UserService permet de créer un utilisateur en appelant la fonction create qui prend comme parametres un utilisateur
-   */
     register() {
 
      let isValid = true;

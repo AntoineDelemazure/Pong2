@@ -6,7 +6,10 @@ import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
 
 /**
- * Page cible une fois que l'utilisateur est connecté
+ * Affichage de message de bienvenue si l'utilisateur n'est pas connecté.
+ *
+ * Affichage de la liste des tournois si l'utilisateur est connecté
+ *
  */
 @Component({
     moduleId: module.id,

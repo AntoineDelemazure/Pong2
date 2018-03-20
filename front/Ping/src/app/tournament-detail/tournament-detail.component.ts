@@ -1,14 +1,12 @@
-/**
- * Composant servant à l'affichage en détail d'un tournois
- * Affiche la liste des inscrits si le tournois n'est pas commencé
- * Affiche l'arbre de tournois et les scores des matches si il est commencé
- */
-
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
 import {Round} from "../_models/round";
 import {Match} from "../_models/match";
-
+/**
+ * Composant servant à l'affichage en détail d'un tournoi
+ * Affiche la liste des inscrits si le tournoi n'est pas commencé
+ * Affiche l'arbre de tournoi et les scores des matches si il est commencé
+ */
 @Component({
   selector: 'app-tournament-detail',
   templateUrl: './tournament-detail.component.html',

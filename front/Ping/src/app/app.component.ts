@@ -1,13 +1,12 @@
-/**
- * Composant qui gère la barre de navigation ainsi que le "router-outlet" qui affiche les différents composants lors de la navigation sur le site
- */
-
 import { Component } from '@angular/core';
 import {User} from "./_models/user";
 import {UserService} from "./_services/user.service";
 import {AuthenticationService} from "./_services/authentication.service";
 import {Router} from "@angular/router";
-
+/**
+ * Composant qui gère la barre de navigation ainsi que le "router-outlet" qui affiche
+ * les différents composants lors de la navigation sur le site
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

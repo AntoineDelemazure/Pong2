@@ -1,16 +1,13 @@
-/**
- * Composant qui permet d'enregistrer un tournois dans la base de données
- * TODO : faire le lien avec le Back-end une fois celui-ci prêt.
- */
-
-
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../_services/user.service";
 import {AlertService} from "../_services/alert.service";
 import {Router} from "@angular/router";
 import {current} from "codelyzer/util/syntaxKind";
 import {User} from "../_models/user";
-
+/**
+ * Composant qui permet d'enregistrer un tournoi dans la base de données
+ * TODO : faire le lien avec le Back-end une fois celui-ci prêt.
+ */
 @Component({
   selector: 'app-tournament-register',
   templateUrl: './tournament-register.component.html',
