@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Tournament} from "../../_models/tournament";
-import {TournamentDetailService} from "../../_services/tournamentDetail.service";
+
 import {User} from "../../_models/user";
 
 /**
@@ -17,21 +17,29 @@ export class TournamentCardComponent implements OnInit, OnDestroy {
   @Input() tournament: any;
   currentUser: User;
 
+  dateFormate: string;
+
   /**
    * constructeur par défaut qui permet de récupérer l'utilisateur courant.
    */
-  constructor(private tournamentService:  TournamentDetailService) {
+  constructor() {
 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(this.currentUser);
 
+
+    // this.dateFormate = this.tournament.date;
+    // this.dateFormate = this.dateFormate.substring(0, 10);
+
   }
 
   ngOnInit() {
+
+    this.dateFormate = this.tournament.date;
+    this.dateFormate = this.dateFormate.substring(0, 10);
   }
 
   ngOnDestroy() {
-    this.tournamentService.tournament = this.tournament;
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
 import {Round} from "../_models/round";
 import {Match} from "../_models/match";
-import {TournamentDetailService} from "../_services/tournamentDetail.service";
 import {UserService} from "../_services/user.service";
 import {User} from "../_models/user";
 
