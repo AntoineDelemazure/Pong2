@@ -16,6 +16,8 @@ export class TournamentCardComponent implements OnInit {
   @Input() tournament: any;
   currentUser: User;
 
+  dateFormate: string;
+
   /**
    * constructeur par défaut qui permet de récupérer l'utilisateur courant.
    */
@@ -24,9 +26,14 @@ export class TournamentCardComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     console.log(this.currentUser);
 
+
+    // this.dateFormate = this.tournament.date;
+    // this.dateFormate = this.dateFormate.substring(0, 10);
+
   }
 
   ngOnInit() {
-  }
 
-}
+    this.dateFormate = this.tournament.date;
+    this.dateFormate = this.dateFormate.substring(0, 10);
+  }
