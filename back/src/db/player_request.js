@@ -79,6 +79,7 @@ exports.getPlayerByUsername = function(username, callback){
         if (rows.length){
             callback(null,
                 [{
+                    id: rows[0].player_id,
                     lastname: rows[0].player_lastname,
                     firstname: rows[0].player_firstname,
                     rank: rows[0].player_rank,
