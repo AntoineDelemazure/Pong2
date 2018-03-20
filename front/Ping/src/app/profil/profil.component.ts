@@ -32,7 +32,7 @@ export class ProfilComponent implements OnInit {
   )
   {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser.token);
+    console.log(this.currentUser);
   }
 
   ngOnInit() {

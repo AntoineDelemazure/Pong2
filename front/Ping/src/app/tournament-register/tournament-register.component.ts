@@ -24,6 +24,7 @@ export class TournamentRegisterComponent implements OnInit {
 
   currentUser: User;
   model: any = {};
+  tournamentDate: string;
 
   constructor(
     private userService: UserService,
@@ -37,10 +38,16 @@ export class TournamentRegisterComponent implements OnInit {
   }
 
   register() {
+
     this.model.id = 0;
-    this.model.finished = false;
-    this.model.open = true;
+    this.model.finished = 0;
+    this.model.open = 1;
     this.model.currentRound = 0;
+    this.tournamentDate = `${this.tournamentDate} 00:00:00`;
+    this.model.date = this.tournamentDate;
+
+
+    //console.log(this.currentUser);
     this.model.referee_id = this.currentUser.id;
 
 
@@ -49,7 +56,7 @@ export class TournamentRegisterComponent implements OnInit {
         .subscribe(
           data => {
             this.alertService.success('Registration successful', true);
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
           },
           error => {
             console.log(error);

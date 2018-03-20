@@ -41,4 +41,9 @@ export class UserService {
         headers: new HttpHeaders().set('token', token)});
 
     }
+
+    getListeTournois(token: string) {
+      return this.http.get<Tournament[]>('http://localhost:1337/api/tournaments',{
+        headers: new HttpHeaders().set('token', token)});
+    }
 }
