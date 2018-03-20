@@ -94,34 +94,6 @@ exports.getPlayerByUsername = function(username, callback){
     });
 };
 
-/*
-/**
- * Mise à jour d'un joueur, prend du json en entrée
- * @param Un joueur
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
- */
-/*
-//Cette fonction est pour l'instant inutile.
-exports.updatePlayer = function(player, callback){
-    db.Connection.getInstance().query(
-        'UPDATE p_players SET player_lastname = "' + player.lastname + '",'+
-        'player_firstname = "' + player.firstname + '",'+
-        'player_rank = "' + player.rank + '",'+
-        'player_username = "' + player.username + '",'+
-        'player_email = "' + player.email + '",'+
-        'player_password = "' + player.password + '",'+
-        'player_admin = "' + player.admin + '",'+
-        'WHERE player_id = "' + player.id + '"',
-        function(err, rows){
-            if (err) {
-                winston.log("error", "Mise à jour d'un joueur");
-                throw err;
-            }
-            winston.log("info", "Mise à jour d'un joueur");
-            callback(rows);
-        })
-}
-*/
 
 /**
  * Création d'un nouveau joueur

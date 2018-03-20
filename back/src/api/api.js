@@ -99,6 +99,7 @@ exports.authenticate = function(req, res) {
                 });
 
                 let response = {
+                    id: player[0].id,
                     firstname: player[0].firstname,
                     lastname: player[0].lastname,
                     username: player[0].username,
