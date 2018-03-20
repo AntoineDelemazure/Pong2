@@ -16,7 +16,6 @@ import {AlertService} from "./_services/alert.service";
 import {FormsModule} from "@angular/forms";
 import {routing} from './app.routing';
 import { HomeComponent } from './home/home.component';
-import { InvitationComponent } from './invitation/invitation.component';
 import { ProfilComponent } from './profil/profil.component';
 import { TournamentListComponent} from './tournament-list/tournament-list.component';
 import { TournamentCardComponent } from './shared/tournament-card/tournament-card.component';
@@ -38,7 +37,6 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    InvitationComponent,
     ProfilComponent,
     TournamentListComponent,
     TournamentCardComponent,

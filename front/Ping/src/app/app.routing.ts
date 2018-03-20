@@ -4,7 +4,6 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
 import {HomeComponent} from "./home/home.component";
-import {InvitationComponent} from "./invitation/invitation.component";
 import {ProfilComponent} from "./profil/profil.component";
 import {TournamentListComponent} from "./tournament-list/tournament-list.component";
 import {TournamentDetailComponent} from "./tournament-detail/tournament-detail.component";
