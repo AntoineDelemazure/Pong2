@@ -7,7 +7,7 @@ import {AuthenticationService} from "../_services/authentication.service";
 import {Router} from "@angular/router";
 import {current} from "codelyzer/util/syntaxKind";
 /**
- * Affiche les informations d'un utilisateur
+ *  Affichage des informations d'utilisateur courant
  */
 
 @Component({
@@ -20,12 +20,7 @@ export class ProfilComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
 
-  /**
-   * Recupere le current user
-   * @param {UserService} userService
-   * @param {AuthenticationService} authentificationService
-   * @param {Router} router
-   */
+
   constructor(private userService: UserService,
               private authentificationService: AuthenticationService,
               private router:Router

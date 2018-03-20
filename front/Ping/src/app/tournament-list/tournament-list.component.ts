@@ -1,7 +1,3 @@
-/**
- * Composant servant à afficher la liste des tournois
- */
-
 import { Component, OnInit } from '@angular/core';
 import {Tournament} from "../_models/tournament";
 import {User} from "../_models/user";
@@ -9,7 +5,12 @@ import {Input} from "@angular/compiler/src/core";
 import {UserService} from "../_services/user.service";
 import {AlertService} from "../_services/alert.service";
 import {Router} from "@angular/router";
+import {Match} from "../_models/match";
+import {Round} from "../_models/round";
 
+/**
+ * Composant servant à afficher la liste des tournoi
+ */
 @Component({
   selector: 'app-tournament-list',
   templateUrl: './tournament-list.component.html',

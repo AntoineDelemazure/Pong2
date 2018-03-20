@@ -22,6 +22,8 @@ import { TournamentListComponent} from './tournament-list/tournament-list.compon
 import { TournamentCardComponent } from './shared/tournament-card/tournament-card.component';
 import { TournamentDetailComponent } from './tournament-detail/tournament-detail.component';
 import { TournamentRegisterComponent } from './tournament-register/tournament-register.component';
+import {EditprofileComponent} from "./editprofile/editprofile.component";
+import {TournamentDetailService} from "./_services/tournamentDetail.service";
 
 
 @NgModule({
@@ -42,13 +44,14 @@ import { TournamentRegisterComponent } from './tournament-register/tournament-re
     TournamentListComponent,
     TournamentCardComponent,
     TournamentDetailComponent,
-
+    EditprofileComponent,
     TournamentRegisterComponent,
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
+    TournamentDetailService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

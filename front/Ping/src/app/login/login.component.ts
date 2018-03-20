@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 /**
- * Composant pour se connecter avec un identifiant et un mot de passe
+ * Formulaire de connexion avec un identifiant et un mot de passe.
+ *
  */
 @Component({
     moduleId: module.id,
@@ -22,9 +23,7 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService) { }
 
-  /**
-   * Appelle de la fonction logout qui deconnecte l'utilisateur lorsqu'il arrive sur la page login.
-   */
+
   ngOnInit() {
         // reset login status
         this.authenticationService.logout();

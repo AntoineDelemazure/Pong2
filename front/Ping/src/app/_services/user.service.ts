@@ -46,4 +46,9 @@ export class UserService {
       return this.http.get<Tournament[]>('http://localhost:1337/api/tournaments',{
         headers: new HttpHeaders().set('token', token)});
     }
+
+    getTournamentById(id: number, token: string){
+      return this.http.get('http://localhost:1337/api/tournaments' + id,{
+        headers: new HttpHeaders().set('token', token)});
+    }
 }
