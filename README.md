@@ -12,7 +12,7 @@ Vous aurez besoin avant tout d'installer NodeJS : https://nodejs.org/en/, qui pe
 
  - Pour tester, placez vous dans le répertoire "back", et lancez la commande "npm test" (vous pouvez découvrir comment ça marche dans le fichier package.json).
 
- - Pour lancer le serveur, placez vous dans le répertoire "back", et lancez la commande "npm start". Le serveur écoute alors sur le port 1337, les requêtes à l'API se faisant alors sur http://localhost:1337/api/{route de la requête}.
+ - Pour lancer le serveur, placez vous dans le répertoire "back", et lancez la commande "npm start". Le serveur écoute alors sur le port 1337, les requêtes à l'API se faisant alors sur http://localhost:1337/api/ {route de la requête}.
 
  - Pour générer la documentation, vous pouvez écrire des commentaires comme vous le feriez pour de la doc java, puis lancez la commande "npm run-script gdoc". La doc générée se trouve dans le dossier "out"
  
