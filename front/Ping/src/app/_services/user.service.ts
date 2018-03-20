@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { User } from '../_models/index';
 import {Tournament} from "../_models/tournament";
@@ -10,6 +10,7 @@ import {Tournament} from "../_models/tournament";
 
 @Injectable()
 export class UserService {
+
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -32,7 +33,12 @@ export class UserService {
         return this.http.delete('http://localhost:1337/api/players' + id);
     }
 
-    createTournament(tournament: Tournament) {
-      return this.http.post('http://localhost:1337/api/tournaments', tournament);
+    //Requete pour creer un tournois et l'ajouter dans la bdd
+
+    createTournament(tournament: Tournament, token: string) {
+
+      return this.http.post('http://localhost:1337/api/tournaments', tournament,{
+        headers: new HttpHeaders().set('token', token)});
+
     }
 }
