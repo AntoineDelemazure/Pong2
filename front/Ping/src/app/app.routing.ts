@@ -12,7 +12,7 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
 
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
