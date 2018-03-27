@@ -15,7 +15,7 @@ const crypt = require('../utils/crypt');
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByID = function(id, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_players WHERE player_id = '+ id, function(err, rows) {
+    db.Connection.getInstance().query(`SELECT * FROM p_players WHERE player_id = ${id}`, function(err, rows) {
         if (err) {
             winston.log('error', `Récupération d'un joueur : ${err.message}`);
             callback(err);
@@ -70,7 +70,7 @@ exports.getPlayerPasswordByUsername = function(username, callback){
  * @param {function} callback - fonction qui traitera les données retournées
  */
 exports.getPlayerByUsername = function(username, callback){
-    db.Connection.getInstance().query('SELECT * FROM p_players WHERE p_players.player_username = "'+ username +'"', function(err, rows) {
+    db.Connection.getInstance().query(`SELECT * FROM p_players WHERE p_players.player_username = "${username}"`, function(err, rows) {
         if (err) {
             winston.log('error', `Récupération d'un joueur par username : ${err.message}`);
             callback(err);
@@ -79,6 +79,7 @@ exports.getPlayerByUsername = function(username, callback){
         if (rows.length){
             callback(null,
                 [{
+                    id: rows[0].player_id,
                     lastname: rows[0].player_lastname,
                     firstname: rows[0].player_firstname,
                     rank: rows[0].player_rank,
@@ -94,34 +95,6 @@ exports.getPlayerByUsername = function(username, callback){
     });
 };
 
-/*
-/**
- * Mise à jour d'un joueur, prend du json en entrée
- * @param Un joueur
- * @param {function} la fonction qui sera appelé après, pour faire quelque chose du résultat
- */
-/*
-//Cette fonction est pour l'instant inutile.
-exports.updatePlayer = function(player, callback){
-    db.Connection.getInstance().query(
-        'UPDATE p_players SET player_lastname = "' + player.lastname + '",'+
-        'player_firstname = "' + player.firstname + '",'+
-        'player_rank = "' + player.rank + '",'+
-        'player_username = "' + player.username + '",'+
-        'player_email = "' + player.email + '",'+
-        'player_password = "' + player.password + '",'+
-        'player_admin = "' + player.admin + '",'+
-        'WHERE player_id = "' + player.id + '"',
-        function(err, rows){
-            if (err) {
-                winston.log("error", "Mise à jour d'un joueur");
-                throw err;
-            }
-            winston.log("info", "Mise à jour d'un joueur");
-            callback(rows);
-        })
-}
-*/
 
 /**
  * Création d'un nouveau joueur
