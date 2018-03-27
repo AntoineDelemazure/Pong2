@@ -61,6 +61,7 @@ exports.sendNewPlayer = function (req, res) {
     winston.log('info', 'POST on /signup');
 
     let newplayer = req.body;
+	newplayer.admin = 0;
 
     player_r.getPlayerByUsername(newplayer.username, (error, player) => {
         if (error) {
