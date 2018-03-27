@@ -37,3 +37,5 @@ export class TournamentCardComponent implements OnInit {
     this.dateFormate = this.tournament.date;
     this.dateFormate = this.dateFormate.substring(0, 10);
   }
+
+}
