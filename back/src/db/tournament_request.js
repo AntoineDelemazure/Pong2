@@ -49,7 +49,7 @@ exports.getAllTournaments = function(callback){
 exports.createTournament = function(tournament, callback){
     db.Connection.getInstance().query(`INSERT INTO p_tournaments 
         (tournament_date, tournament_finished, tournament_open, tournament_current_turn, tournament_referee_id)
-        VALUES ("${tournament.date}", "${tournament.finished}", "${tournament.open}", "${tournament.current_turn}", "${tournament.referee_id}")`,
+        VALUES ("${tournament.date}", "${tournament.finished}", "${tournament.open}", "${tournament.current_turn}", null)`, //TO CHANGE : referee_id
         function(err, rows, fields){
             if(err){
                 winston.log('error', "Erreur lors de la création d'un nouveau tournoi")

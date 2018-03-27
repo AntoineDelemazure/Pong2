@@ -137,8 +137,11 @@ exports.fetchTournaments = function(req, res){
 
 exports.createNewTournament = function(req, res){
     winston.log('info', "POST on /tournaments. Time for a new tournament")
+	ntournament = req.body;
+	ntournament.current_turn = 0;
+	ntournament.referee_id = null;
     try{
-        tournaments_r.createTournament(req.body, function(tournament){
+        tournaments_r.createTournament(ntournament, function(tournament){
             return res.status(200).json({"info": "Tout s'est bien passé"});
         })
     }catch(err){
