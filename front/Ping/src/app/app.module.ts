@@ -29,7 +29,7 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    routing
+    routing,
   ],
   declarations: [
     AppComponent,

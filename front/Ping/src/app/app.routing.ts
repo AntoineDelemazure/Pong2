@@ -12,8 +12,8 @@ import {EditprofileComponent} from "./editprofile/editprofile.component";
 
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent, runGuardsAndResolvers: 'always'},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always'},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profil', component: ProfilComponent},
@@ -22,7 +22,7 @@ const appRoutes: Routes = [
   { path: 'tournament-register', component: TournamentRegisterComponent},
 
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'});
